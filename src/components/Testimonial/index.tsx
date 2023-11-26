@@ -1,7 +1,7 @@
 "use client"
 import SectionHeader from "../Common/SectionHeader"
 
-import { Autoplay, Pagination } from "swiper/modules"
+import { Autoplay, Pagination, Navigation } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
@@ -14,15 +14,15 @@ import { testimonialData } from "./testimonialData"
 const Testimonial = () => {
   return (
     <>
-      <section>
-        <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
+      <section id="testimonial">
+        <div className="mx-auto mt-20 max-w-c-1315 px-4 md:px-8 xl:px-0">
           {/* <!-- Section Title Start --> */}
           <div className="animate_top mx-auto text-center">
             <SectionHeader
               headerInfo={{
-                title: `TESTIMONIALS`,
-                subtitle: `Client’s Testimonials`,
-                description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.`
+                title: `クチコミ`,
+                subtitle: `患者様からの喜びの声が、信頼の証です`,
+                description: `最近頂いたクチコミを、新しいものからいくつかご紹介します。`
               }}
             />
           </div>
@@ -54,13 +54,14 @@ const Testimonial = () => {
               spaceBetween={50}
               slidesPerView={2}
               autoplay={{
-                delay: 2500,
-                disableOnInteraction: false
+                delay: 3500,
+                disableOnInteraction: true
               }}
               pagination={{
                 clickable: true
               }}
-              modules={[Autoplay, Pagination]}
+              navigation={true}
+              modules={[Autoplay, Pagination, Navigation]}
               breakpoints={{
                 // when window width is >= 640px
                 0: {

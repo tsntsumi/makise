@@ -35,24 +35,34 @@ const Header = () => {
           : ""
       }`}
     >
-      <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
-        <div className="flex w-full items-center justify-between xl:w-1/4">
+      <div className="relative mx-auto max-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
+        <div className="flex w-full items-center justify-between xl:w-1/4 gap-4">
           <a href="/">
             <Image
               src="/images/logo/logo-dark.svg"
               alt="logo"
-              width={119.03}
-              height={30}
-              className="hidden w-full dark:block"
+              width={155.6}
+              height={85}
+              className="hidden min-w-[100px] h-[64px] min-h-[64px] dark:block"
             />
             <Image
               src="/images/logo/logo-light.svg"
               alt="logo"
-              width={119.03}
-              height={30}
-              className="w-full dark:hidden"
+              width={155.6}
+              height={85}
+              className="min-w-[100px] h-[64px] min-h-[64px] dark:hidden"
             />
           </a>
+          <div className="md:w-1/2 md:mx-8 md:text-center whitespace-nowrap">
+            <div className="text-xs">ご予約はお電話:8時〜20時</div>
+            <div className="text-xs">(日曜休、水曜午後休)</div>
+            <div>
+              <span>☏ </span>
+              <a href="tel:0292240076" className="text-blue-500 underline">
+                029 224 0076
+              </a>
+            </div>
+          </div>
 
           {/* <!-- Hamburger Toggle BTN --> */}
           <button
@@ -103,7 +113,7 @@ const Header = () => {
           }`}
         >
           <nav>
-            <ul className="flex flex-col gap-5 xl:flex-row xl:items-center xl:gap-10">
+            <ul className="flex flex-col gap-4 justify-around xl:flex-row xl:items-center xl:gap-6">
               {menuData?.map((menuItem, key) => (
                 <li key={key} className={menuItem.submenu && "group relative"}>
                   {menuItem.submenu ? (
@@ -151,9 +161,20 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className="mt-7 flex items-center gap-6 xl:mt-0">
-            <ThemeToggler />
+          <div className="text-xs">
+            <Link href="/#lead-magnet">
+              <Image
+                data-v-6fa6a74a=""
+                src="/images/icon/line-add-friend-ja.png"
+                alt="友だちになる"
+                className="inline-block"
+                width="92"
+                height="42"
+              />
+              とストレッチブックもらえる
+            </Link>
           </div>
+          <ThemeToggler />
         </div>
       </div>
     </header>

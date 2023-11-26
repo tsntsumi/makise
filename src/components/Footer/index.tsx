@@ -75,7 +75,10 @@ const Footer = () => {
               viewport={{ once: true }}
               className="animate_top"
             >
-              <p>&copy; {2023} Alizza Ideal. All rights reserved</p>
+              <p>
+                &copy; {2023} Makise Shinkyu Seikotsu-in & Alizza Ideal. All
+                rights reserved
+              </p>
             </motion.div>
 
             {/*

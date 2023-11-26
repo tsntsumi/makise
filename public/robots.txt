@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.alizza-ideal.com
+Host: https://makise-seikotsu.alizza-ideal.com
 
 # Sitemaps
-Sitemap: https://www.alizza-ideal.com/sitemap.xml
+Sitemap: https://makise-seikotsu.alizza-ideal.com/sitemap.xml

@@ -3,27 +3,57 @@ import { Menu } from "@/types/menu"
 const menuData: Menu[] = [
   {
     id: 1,
-    title: "ホーム",
+    title: (
+      <div className="text-xs">
+        <div>住所：水戸市城東３丁目</div>
+        <div>城東ロイヤルハイツ103</div>
+      </div>
+    ),
     newTab: false,
-    path: "/"
+    path: "#"
   },
   {
     id: 2,
-    title: "特徴",
+    title: <div className="text-xs underline">患者様の声</div>,
+    newTab: false,
+    path: "/#testimonial"
+  },
+  {
+    id: 2,
+    title: <div className="text-xs underline">自己紹介</div>,
+    newTab: false,
+    path: "/#about"
+  },
+  {
+    id: 3,
+    title: <div className="text-xs underline">選ばれる理由</div>,
     newTab: false,
     path: "/#features"
   },
   {
-    id: 2.1,
-    title: "Blog",
+    id: 4,
+    title: <div className="text-xs underline">その他...</div>,
     newTab: false,
-    path: "/blog"
-  },
-  {
-    id: 2.2,
-    title: "About",
-    newTab: false,
-    path: "/who-we-are"
+    submenu: [
+      {
+        id: 4.1,
+        title: <div className="text-xs underline">施術の流れ</div>,
+        newTab: false,
+        path: "/#processes"
+      },
+      {
+        id: 4.2,
+        title: <div className="text-xs underline">施術料金</div>,
+        newTab: false,
+        path: "/#pricing"
+      },
+      {
+        id: 4.3,
+        title: <div className="text-xs underline">道順</div>,
+        newTab: false,
+        path: "/#accesses"
+      }
+    ]
   }
 ]
 

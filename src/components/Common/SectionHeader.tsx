@@ -32,12 +32,14 @@ const SectionHeader = ({ headerInfo }: { headerInfo: HeaderInfo }) => {
         viewport={{ once: true }}
         className="animate_top mx-auto text-center"
       >
-        <div className="py-2 mb-6 inline-block rounded-full bg-zumthor px-4.5 dark:border dark:border-strokedark dark:bg-blacksection">
-          <span className="text-sectiontitle font-medium text-black dark:text-white">
-            {title}
-          </span>
-        </div>
-        <h1 className="mx-auto mb-4 text-3xl text-justify font-bold text-black dark:text-white md:w-4/5 xl:w-1/2 xl:text-sectiontitle3">
+        {title && (
+          <div className="py-2 mb-6 inline-block rounded-full bg-zumthor px-4.5 dark:border dark:border-strokedark dark:bg-blacksection">
+            <span className="text-sectiontitle font-medium text-black dark:text-white">
+              {title}
+            </span>
+          </div>
+        )}
+        <h1 className="mx-auto mb-4 text-3xl text-justify font-bold text-black dark:text-white md:w-fit xl:w-2/3 xl:text-sectiontitle3">
           <>{subtitle}</>
         </h1>
         <div className="mx-auto md:w-4/5 lg:w-3/5 xl:w-[46%] text-justify">

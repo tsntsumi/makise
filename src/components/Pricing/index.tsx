@@ -1,20 +1,44 @@
-"use client";
-import Image from "next/image";
-import SectionHeader from "../Common/SectionHeader";
+"use client"
+import Image from "next/image"
+import Link from "next/link"
+import SectionHeader from "../Common/SectionHeader"
 
 const Pricing = () => {
   return (
     <>
       {/* <!-- ===== Pricing Table Start ===== --> */}
-      <section className="overflow-hidden pb-20 pt-15 lg:pb-25 xl:pb-30">
+      <section
+        id="pricing"
+        className="overflow-hidden pb-20 pt-15 lg:pb-25 xl:pb-30"
+      >
         <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
           {/* <!-- Section Title Start --> */}
           <div className="animate_top mx-auto text-center">
             <SectionHeader
               headerInfo={{
-                title: `PRICING PLANS`,
-                subtitle: `Simple Pricing`,
-                description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.`,
+                title: `施術料金`,
+                subtitle: (
+                  <div className="mx-auto text-center">
+                    シンプル明解なコース料金
+                  </div>
+                ),
+                description: (
+                  <>
+                    <p>まきせの整体は、通常次のようになっています。</p>
+                    <div className="flex justify-center">
+                      <dl>
+                        <dt className="font-bold">整体コース: </dt>
+                        <dd className="ml-8">
+                          初回 5,480円、2回目以降 4,480円
+                        </dd>
+                        <dt className="font-bold">はり整体コース: </dt>
+                        <dd className="ml-8">
+                          初回 7,480円、 2回目以降 6,480円
+                        </dd>
+                      </dl>
+                    </div>
+                  </>
+                )
               }}
             />
           </div>
@@ -22,177 +46,126 @@ const Pricing = () => {
         </div>
 
         <div className="relative mx-auto mt-15 max-w-[1207px] px-4 md:px-8 xl:mt-20 xl:px-0">
-          <div className="absolute -bottom-15 -z-1 h-full w-full">
-            <Image
-              fill
-              src="./images/shape/shape-dotted-light.svg"
-              alt="Dotted"
-              className="dark:hidden"
-            />
+          <div className="py-2 mb-6 w-fit mx-auto block rounded-full bg-zumthor px-4.5 dark:border dark:border-strokedark dark:bg-blacksection">
+            <span className="text-sectiontitle font-medium text-black dark:text-white">
+              なんですが・・・
+            </span>
           </div>
-          <div className="flex flex-wrap justify-center gap-7.5 lg:flex-nowrap xl:gap-12.5">
-            {/* <!-- Pricing Item --> */}
-            <div className="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5">
-              <h3 className="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-                $10{" "}
-                <span className="text-regular text-waterloo dark:text-manatee">
-                  /month
-                </span>
-              </h3>
-              <h4 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
-                Small Pack
-              </h4>
-              <p>Lorem ipsum dolor sit amet, consec adipisicing elit.</p>
-
-              <div className="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark">
-                <ul>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    300 GB Storage
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Unlimited Photos and Videos
-                  </li>
-                  <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee">
-                    Exclusive Support
-                  </li>
-                  <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee">
-                    Custom Branding Strategy
-                  </li>
-                </ul>
+          <div className="w-full">
+            <h3 className="text-center md:w-3/4 mx-auto">
+              <span className="whitespace-nowrap leading-relaxed">
+                リニューアルした
+              </span>
+              <span className="whitespace-nowrap leading-relaxed">
+                このホームページを見たあなただけに
+              </span>
+              <span className="whitespace-nowrap leading-relaxed">
+                特別なご提案があります
+              </span>
+            </h3>
+            <div className="flex flex-nowrap items-center gap-4 md:w-2/3 md:mx-auto my-12 text-base">
+              <div className="text-right">
+                <div className="whitespace-nowrap text-xs md:text-xl">
+                  通常初回施術
+                </div>
+                <div className="font-bold text-xl md:text-2xl">
+                  <s>7,480</s>
+                  <span className="text-sm">円</span>
+                </div>
+                <div className="text-left text-[0.6rem] leading-3 md:text-sm">
+                  人気の
+                  <span className="whitespace-nowrap">はり整体 コース</span>
+                </div>
               </div>
-
-              <button
-                aria-label="Get the Plan button"
-                className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
-              >
-                <span className="duration-300 group-hover/btn:pr-2">
-                  Get the Plan
-                </span>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
+              <div className="whitespace-nowrap text-xs md:text-xl text-center">
+                のところ
+              </div>
+              <div className="col-span-3 flex flex-nowrap justify-end">
+                <div className="justify-center text-red-500 font-bold">
+                  <div className="text-sm md:text-3xl">
+                    <span className="whitespace-nowrap">初回限定の</span>
+                    <span className="whitespace-nowrap">特別価格</span>
+                  </div>
+                  <div className="flex flex-nowrap items-end text-5xl md:text-8xl">
+                    1,980<span className="text-sm md:text-2xl">円</span>
+                  </div>
+                </div>
+                <div className="flex whitespace-nowrap text-center rounded-full bg-red-500 p-2 w-fit aspect-square md:w-32 md:h-32 text-white items-center justify-center text-xs md:text-xl m-0">
+                  およそ
+                  <br />
+                  70% OFF
+                </div>
+              </div>
+            </div>
+            <div className="text-xl md:text-4xl font-bold text-white bg-orange-500 w-fit mx-auto p-4">
+              １日１名様限定割引となります
             </div>
 
-            {/* <!-- Pricing Item --> */}
-            <div className="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5">
-              <div className="absolute -right-3.5 top-7.5 -rotate-90 rounded-bl-full rounded-tl-full bg-primary px-4.5 py-1.5 text-metatitle font-medium uppercase text-white">
-                popular
+            <div className="p-0 my-12 w-full md:w-2/3 md:mx-auto text-justify">
+              <div className="text-lg md:text-4xl font-bold border-2 mx-auto p-4">
+                初回を1,980円にさせていただく理由
               </div>
-
-              <h3 className="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-                $59{" "}
-                <span className="text-regular text-waterloo dark:text-manatee">
-                  /month
-                </span>
-              </h3>
-              <h4 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
-                Medium Pack
-              </h4>
-              <p>Lorem ipsum dolor sit amet, consec adipisicing elit.</p>
-
-              <div className="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark">
-                <ul>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    300 GB Storage
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Unlimited Photos and Videos
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Exclusive Support
-                  </li>
-                  <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee">
-                    Custom Branding Strategy
-                  </li>
-                </ul>
+              <div className="m-0 p-4 border-2 border-t-0">
+                <p>
+                  ほとんどのお医者さんがやっているのは、
+                  症状を取り除くだけの対症療法で、根本から治すことはありません。
+                </p>
+                <p>
+                  多くの人が、身体も腸もガチガチに固めてしまうコルセット、
+                  強い痛み止め、すぐにゆがみが戻ってしまうマッサージ、
+                  本当に効いているのかわからない湿布など、
+                  対症療法に何度も何度も通って、無駄にお金を使うだけでなく、
+                  時間も浪費しています。
+                </p>
+                <p>
+                  わたしの施術の良さをどのようにあなたに伝えたらいいかを考えました。
+                  そこで、通常7,480円のまきせで一番人気の施術のお試し体験会を
+                  行うことにしました。
+                </p>
+                <p>
+                  <span className="font-black text-red-400 text-2xl">
+                    １２月７日
+                  </span>
+                  まで、１日１名限定となります。
+                </p>
+                <p>
+                  一人ひとりに責任を持って施術したいため、少人数制となっています。
+                </p>
+                <p>
+                  もし、本気で改善したいのでしたら、すぐに予約のお電話をください。
+                  結果を出すことをお約束いたします。
+                </p>
               </div>
-
-              <button
-                aria-label="Get the Plan button"
-                className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
-              >
-                <span className="duration-300 group-hover/btn:pr-2">
-                  Get the Plan
-                </span>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* <!-- Pricing Item --> */}
-            <div className="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5">
-              <h3 className="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-                $189{" "}
-                <span className="text-regular text-waterloo dark:text-manatee">
-                  /month
-                </span>
-              </h3>
-              <h4 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
-                Large Pack
-              </h4>
-              <p>Lorem ipsum dolor sit amet, consec adipisicing elit.</p>
-
-              <div className="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark">
-                <ul>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    300 GB Storage
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Unlimited Photos and Videos
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Exclusive Support
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Custom Branding Strategy
-                  </li>
-                </ul>
+              <div className="m-0 p-4 border-2 border-t-0">
+                <Link href="tel:0292240076">
+                  <button
+                    aria-label="Get the Plan button"
+                    className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                  >
+                    <span className="duration-300 group-hover/btn:pr-2">
+                      電話で予約する
+                    </span>
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </Link>
               </div>
-
-              <button
-                aria-label="Get the Plan button"
-                className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
-              >
-                <span className="duration-300 group-hover/btn:pr-2">
-                  Get the Plan
-                </span>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
       </section>
       {/* <!-- ===== Pricing Table End ===== --> */}
     </>
-  );
-};
+  )
+}
 
-export default Pricing;
+export default Pricing
