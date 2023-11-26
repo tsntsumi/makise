@@ -14,7 +14,7 @@ import About from "@/components/About"
 import Access from "@/components/Access"
 import CTA from "@/components/CTA"
 import Magnet from "@/components/Magnet"
-import LatestBlogs from "@/components/Blogs/Latests"
+import LatestAnnounces from "@/components/Announces/Latests"
 
 import firebaseConfig from "@/firebase-config"
 

@@ -1,12 +1,11 @@
-import RelatedPost from "@/components/Blogs/RelatedPost"
-import SharePost from "@/components/Blogs/SharePost"
+import RelatedPost from "@/components/Announces/RelatedPost"
+import SharePost from "@/components/Announces/SharePost"
 import Media from "@/components/Media"
 import { storage } from "@/lib/firebase/app"
-import { ref, getDownloadURL } from "firebase/storage"
 const logger = require("firebase-functions/logger")
 
-const SingleBlogPage = async ({ blog, children }) => {
-  const { title, hero, author, createdAt, tags, category } = blog
+const SingleAnnouncePage = async ({ announce, children }) => {
+  const { title, hero, author, createdAt, tags, category } = announce
   const date = new Date(createdAt)
   return (
     <>
@@ -52,7 +51,7 @@ const SingleBlogPage = async ({ blog, children }) => {
                   </li>
                 </ul>
 
-                <div className="blog-details">
+                <div className="announce-details">
                   <>{children}</>
                 </div>
               </div>
@@ -64,4 +63,4 @@ const SingleBlogPage = async ({ blog, children }) => {
   )
 }
 
-export default SingleBlogPage
+export default SingleAnnouncePage

@@ -1,4 +1,4 @@
-import { retrieveBlogs } from "@/lib/firebase/firestore"
+import { retrieveAnnounces } from "@/lib/firebase/firestore"
 
 const SharePost = () => {
   return (

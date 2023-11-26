@@ -1,22 +1,20 @@
-export type BlogEntry = {
+export type AnnounceEntry = {
   title: string
-  hero: string
-  summary: string
   slug: string
   author: string
   tags: string[]
-  content: (BlogEntryImages | BlogEntryText)[]
+  content: (AnnounceEntryImages | AnnounceEntryText)[]
   category: string
   status: string
   createdat: Date
 }
 
-export type BlogEntryImages = {
+export type AnnounceEntryImages = {
   type: "images"
   value: string[]
 }
 
-export type BlogEntryText = {
+export type AnnounceEntryText = {
   type: "text"
   value: string
 }

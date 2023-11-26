@@ -1,11 +1,11 @@
-import SingleBlogPage from "@/components/Blogs/SingleBlogPage"
+import SingleAnnouncePage from "@/components/Announces/SingleAnnouncePage"
 import NextImage from "next/image"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeKatex from "rehype-katex"
 import "katex/dist/katex.min.css"
 import { db, storage } from "@/lib/firebase/app"
-import { retrieveBlogs } from "@/lib/firebase/firestore"
+import { retrieveAnnounces } from "@/lib/firebase/firestore"
 import Media, { Image, Video } from "@/components/Media"
 const logger = require("firebase-functions/logger")
 
@@ -15,7 +15,7 @@ const ContentImage = ({ path, width, height, ...rest }) => {
       src={path}
       width={width || 640}
       height={height || 480}
-      alt="blog content image"
+      alt="announce content image"
       {...rest}
     />
   )
@@ -31,7 +31,7 @@ const ContentVideo = async ({ path, width, height, ...rest }) => {
         controls
         muted={true}
         autoPlay={true}
-        alt="blog content video"
+        alt="announce content video"
         className="mx-auto"
         {...rest}
       />
@@ -74,14 +74,14 @@ const Content = ({ content }) => {
   return <>{content.value}</>
 }
 
-export default async function BlogPage({ params }) {
-  const blogs = await retrieveBlogs({ slug: params.slug })
+export default async function AnnouncePage({ params }) {
+  const announces = await retrieveAnnounces({ slug: params.slug })
 
-  return blogs?.map((blog) => (
-    <SingleBlogPage key={blog.id} blog={blog}>
-      {blog.content?.map((c, key) => (
+  return announces?.map((announce) => (
+    <SingleAnnouncePage key={announce.id} announce={announce}>
+      {announce.content?.map((c, key) => (
         <Content content={c} key={`$key`} />
       ))}
-    </SingleBlogPage>
+    </SingleAnnouncePage>
   ))
 }

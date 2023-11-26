@@ -6,7 +6,7 @@ import "@/app/globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export default function BlogLayout({ children }) {
+export default function AnnounceLayout({ children }) {
   return (
     <>
       <Header />

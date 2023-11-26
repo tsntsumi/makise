@@ -1,22 +1,26 @@
-import { buildCollection, buildProperty } from "firecms"
-import { BlogEntryPreview } from "./blogentrypreview"
-import { BlogEntry } from "@/types/blog"
-import { categoryEnumeration } from "@/collections/categories"
+import { buildCollection, buildProperty, buildEnumValues } from "firecms"
+import { AnnounceEntryPreview } from "@/collections/announceEntryPreview"
+import { AnnounceEntry } from "@/types/announce"
 
-export const blogCollection = buildCollection<BlogEntry>({
-  name: "Blog entries",
-  path: "blogs",
+export const categoryEnumeration = buildEnumValues({
+  "holyday": "休業日",
+  "health": "健康"
+})
+
+export const announceCollection = buildCollection<AnnounceEntry>({
+  name: "Announce entries",
+  path: "announces",
   group: "Main",
   views: [
     {
       path: "preview",
       name: "Preview",
-      Builder: BlogEntryPreview
+      Builder: AnnounceEntryPreview
     }
   ],
   properties: {
     title: {
-      name: "Title",
+      name: "タイトル",
       validation: { required: true },
       dataType: "string"
     },
@@ -25,41 +29,22 @@ export const blogCollection = buildCollection<BlogEntry>({
       validation: { required: true },
       dataType: "string"
     },
-    hero: buildProperty({
-      name: "Hero Image",
-      dataType: "string",
-      storage: {
-        mediaType: "image",
-        storagePath: "images",
-        acceptedFiles: ["image/*"],
-        metadata: {
-          cacheControl: "max-age=1000000"
-        }
-      }
-    }),
     author: {
-      name: "Author",
+      name: "作者",
       validation: { required: true },
       dataType: "string"
     },
     tags: {
-      name: "Tags",
+      name: "タグリスト",
       dataType: "array",
       of: {
-        name: "Tag",
+        name: "タグ",
         dataType: "string"
       }
     },
-    summary: {
-      name: "Summary",
-      validation: { required: true },
-      dataType: "string",
-      columnWidth: 400,
-      markdown: true
-    },
     content: {
-      name: "Content",
-      description: "ブログの内容。テキストと画像の配列",
+      name: "内容",
+      description: "お知らせの内容。テキストと画像の配列",
       validation: { required: true },
       dataType: "array",
       columnWidth: 400,
@@ -69,11 +54,11 @@ export const blogCollection = buildCollection<BlogEntry>({
         properties: {
           text: {
             dataType: "string",
-            name: "Text",
+            name: "本文",
             markdown: true
           },
           images: buildProperty({
-            name: "Images",
+            name: "画像・写真",
             dataType: "array",
             of: buildProperty({
               dataType: "string",
@@ -90,7 +75,7 @@ export const blogCollection = buildCollection<BlogEntry>({
               "This fields allows uploading multiple images at once and reordering"
           }),
           videos: buildProperty({
-            name: "Videos",
+            name: "動画",
             dataType: "array",
             of: buildProperty({
               dataType: "string",
@@ -110,34 +95,34 @@ export const blogCollection = buildCollection<BlogEntry>({
       }
     },
     category: ({ values }) => ({
-      name: "Category",
+      name: "カテゴリー",
       validation: { required: true },
       dataType: "string",
       columnWidth: 140,
       enumValues: categoryEnumeration,
-      defaults: "growth"
+      defaults: "holiday"
     }),
     status: ({ values }) => ({
-      name: "Status",
+      name: "状態",
       validation: { required: true },
       dataType: "string",
       columnWidth: 140,
       enumValues: {
         published: {
           id: "published",
-          label: "Published",
-          disabled: !values.hero
+          label: "公開",
+          disabled: !values.slug
         },
-        draft: "Draft"
+        draft: "下書き"
       },
       defaultValue: "draft"
     }),
     createdat: {
-      name: "Created on",
+      name: "作成日",
       dataType: "date",
       autoValue: "on_create"
     }
   }
 })
 
-export default blogCollection
+export default announceCollection

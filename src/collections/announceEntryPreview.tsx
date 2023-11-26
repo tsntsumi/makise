@@ -24,29 +24,17 @@ import {
   useStorageSource
 } from "firecms"
 
-import { BlogEntry } from "@/types/blog"
+import { AnnounceEntry } from "@/types/announce"
 
 /**
- * This is a sample view used to render the content of a blog entry.
+ * This is a sample view used to render the content of a announce entry.
  * It is bound to the data that is modified in the form.
  */
-export function BlogEntryPreview({
+export function AnnounceEntryPreview({
   modifiedValues
-}: EntityCustomViewParams<BlogEntry>) {
+}: EntityCustomViewParams<AnnounceEntry>) {
   return (
     <Box>
-      <Media
-        alt={"Header"}
-        style={{
-          width: "100%",
-          maxHeight: "300px",
-          objectFit: "cover"
-        }}
-        width={320}
-        height={240}
-        src={modifiedValues?.hero}
-      />
-
       <Container
         maxWidth={"md"}
         sx={{
@@ -96,7 +84,7 @@ export function BlogEntryPreview({
               return (
                 <ErrorView
                   key={`preview_images_${index}`}
-                  error={"Unexpected value in blog entry"}
+                  error={"Unexpected value in announce entry"}
                 />
               )
             })}

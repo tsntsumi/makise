@@ -33,8 +33,8 @@ function applyQueryFilters(q, { slug, offset, limitnum, category }) {
   return q
 }
 
-export async function retrieveBlogs(filters = {}) {
-  const c = query(collection(db, "blogs"))
+export async function retrieveAnnounces(filters = {}) {
+  const c = query(collection(db, "announces"))
   const q = applyQueryFilters(c, filters)
   const r = await getDocs(q)
   return r.docs.map((d) => {
@@ -49,12 +49,12 @@ export async function retrieveBlogs(filters = {}) {
   })
 }
 
-export async function retrieveBlogsSnapshot(cb, filters = {}) {
+export async function retrieveAnnouncesSnapshot(cb, filters = {}) {
   if (typeof cb !== "function") {
     console.log("Error: The callback parameter is not a function")
     return
   }
-  const c = query(collection(db, "blogs"))
+  const c = query(collection(db, "announces"))
   const q = applyQueryFilters(c, filters)
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
     const r = querySnapshot.docs.map((d) => {
@@ -70,10 +70,10 @@ export async function retrieveBlogsSnapshot(cb, filters = {}) {
   return unsubscribe
 }
 
-export async function blogBySlug(slug) {
+export async function announceBySlug(slug) {
   if (!slug) {
     console.log("Error: Invalid slug received: ", slug)
     return
   }
-  return blogs({ slug: slug, limit: 1 })
+  return await retrieveAnnounces({ slug: slug, limit: 1 })
 }

@@ -1,17 +1,17 @@
-import BlogListings from "@/components/Blogs/Listings"
-import { retrieveBlogs } from "@/lib/firebase/firestore.js"
+import AnnounceListings from "@/components/Announces/Listings"
+import { retrieveAnnounces } from "@/lib/firebase/firestore.js"
 
-// List all blog items
+// List all announce items
 export default async function Page() {
-  const posts = await retrieveBlogs()
+  const announces = await retrieveAnnounces()
   return (
-    <BlogListings
+    <AnnounceListings
       headerInfo={{
         title: "お知らせ",
         subtitle: "これまでのお知らせの一覧です",
         description: <></>
       }}
-      blogs={posts}
+      announces={announces}
     />
   )
 }

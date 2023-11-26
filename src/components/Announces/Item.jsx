@@ -14,28 +14,28 @@ const components = {
   Media: Media
 }
 
-export default function BlogItem({ blog }) {
+export default function AnnounceItem({ announce }) {
   const elipsis = (text, count) =>
     text?.slice(0, count) + (text.length > count ? "..." : "")
   return (
     <>
       <div>
         <Link
-          href={`/blog/${blog.slug}`}
+          href={`/announce/${announce.slug}`}
           className="relative block aspect-[368/239]"
         >
-          <Media src={blog.hero} alt={blog.title} unoptimized fill />
+          <Media src={announce.hero} alt={announce.title} unoptimized fill />
         </Link>
 
         <div className="px-4">
-          <Link href={`/blog/${blog.slug}`}>
+          <Link href={`/announce/${announce.slug}`}>
             <h3 className="mb-3.5 mt-7.5 line-clamp-2 inline-block text-lg font-medium text-black duration-300 hover:text-primary dark:text-white dark:hover:text-primary xl:text-itemtitle2 w-full text-justify">
-              {elipsis(blog.title, 40)}
+              {elipsis(announce.title, 40)}
             </h3>
           </Link>
           <div>
             <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeKatex]}>
-              {blog.summary}
+              {announce.summary}
             </Markdown>
           </div>
         </div>
