@@ -9,7 +9,7 @@ import "@fontsource/ibm-plex-mono"
 import firebaseConfig from "@/firebase-config"
 
 import { announceCollection } from "@/collections/announceEntries"
-import logo from "@/images/logo/logo-light.svg"
+const logo = "/images/makise-hp-logo.svg"
 
 export default function CMS() {
   const cmsAuthenticator: Authenticator<FirebaseUser> = useCallback(
@@ -17,8 +17,6 @@ export default function CMS() {
       if (user?.email?.includes("flanders")) {
         throw Error("Stupid Flanders!")
       }
-
-      console.log("Allowing access to", user?.email)
 
       return true
     },

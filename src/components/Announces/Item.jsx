@@ -1,7 +1,7 @@
 "use client"
-import { React, useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import Link from "next/link"
+import NextLink from "next/link"
+import Link from "@/components/Link"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeKatex from "rehype-katex"
@@ -16,28 +16,27 @@ const components = {
 
 export default function AnnounceItem({ announce }) {
   const elipsis = (text, count) =>
-    text?.slice(0, count) + (text.length > count ? "..." : "")
+    text?.slice(0, count) + (text?.length > count ? "..." : "")
+  const content = announce.content
+    ?.filter((c) => c.type === "text")
+    ?.at(0).value
+  const summary = elipsis(content, 40)
   return (
     <>
       <div>
-        <Link
-          href={`/announce/${announce.slug}`}
-          className="relative block aspect-[368/239]"
-        >
-          <Media src={announce.hero} alt={announce.title} unoptimized fill />
-        </Link>
-
         <div className="px-4">
-          <Link href={`/announce/${announce.slug}`}>
+          <NextLink href={`/announces/${announce.slug}`}>
             <h3 className="mb-3.5 mt-7.5 line-clamp-2 inline-block text-lg font-medium text-black duration-300 hover:text-primary dark:text-white dark:hover:text-primary xl:text-itemtitle2 w-full text-justify">
               {elipsis(announce.title, 40)}
             </h3>
-          </Link>
+          </NextLink>
+          <div>{announce?.date}</div>
           <div>
             <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeKatex]}>
-              {announce.summary}
+              {summary || ""}
             </Markdown>
           </div>
+          <Link href={`/announces/${announce.slug}`}>詳しく</Link>
         </div>
       </div>
     </>

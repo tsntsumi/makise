@@ -1,31 +1,33 @@
+"use client"
+import { React, useState, useEffect } from "react"
 import SingleAnnouncePage from "@/components/Announces/SingleAnnouncePage"
 import NextImage from "next/image"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeKatex from "rehype-katex"
 import "katex/dist/katex.min.css"
+import { basename } from "path"
 import { db, storage } from "@/lib/firebase/app"
-import { retrieveAnnounces } from "@/lib/firebase/firestore"
+import { retrieveAnnouncesSnapshot } from "@/lib/firebase/firestore"
 import Media, { Image, Video } from "@/components/Media"
-const logger = require("firebase-functions/logger")
 
 const ContentImage = ({ path, width, height, ...rest }) => {
   return (
     <Image
       src={path}
-      width={width || 640}
-      height={height || 480}
+      width={width || 320}
+      height={height || 240}
       alt="announce content image"
       {...rest}
     />
   )
 }
 
-const ContentVideo = async ({ path, width, height, ...rest }) => {
+const ContentVideo = ({ path, width, height, ...rest }) => {
   return (
     <>
-      <video
-        src={url}
+      <Video
+        src={path}
         width={width || 320}
         height={height || 240}
         controls
@@ -61,27 +63,59 @@ const Content = ({ content }) => {
   if (content.type === "text") {
     return <ContentText text={content.value} />
   }
-  /* if (content.type === "images") {
-   *   const images = [...content.value]
-   *   // return images.map((image, key) => <ContentImage path={image} key={key} />)
-   *   return <></>
-   * }
-   * if (content.type === "videos") {
-   *   const videos = [...content.value]
-   *   // return videos.map((video, key) => <ContentVideo path={video} key={key} />)
-   *   return <></>
-   * } */
+  if (content.type === "images") {
+    const images = [...content.value]
+    return (
+      <div className="flex flex-wrap gap-2 items-start justify-around w-full">
+        {images.map((image, key) => (
+          <Image alt={`content image ${key}`} path={image} key={key} />
+        ))}
+      </div>
+    )
+  }
+  if (content.type === "videos") {
+    const videos = [...content.value]
+    return (
+      <div className="flex flex-wrap gap-2 items-start justify-around w-full">
+        {videos.map((video, key) => (
+          <Video alt={`content video ${key}`} path={video} key={key} />
+        ))}
+      </div>
+    )
+  }
   return <>{content.value}</>
 }
 
-export default async function AnnouncePage({ params }) {
-  const announces = await retrieveAnnounces({ slug: params.slug })
+export default function AnnouncePage({ params }) {
+  const { slug } = params
+  const [announces, setAnnounces] = useState([])
+  const [filters, setFilters] = useState({ slug: slug })
 
-  return announces?.map((announce) => (
-    <SingleAnnouncePage key={announce.id} announce={announce}>
-      {announce.content?.map((c, key) => (
-        <Content content={c} key={`$key`} />
-      ))}
-    </SingleAnnouncePage>
-  ))
+  useEffect(() => {
+    const unsubscribe = retrieveAnnouncesSnapshot((data) => {
+      setAnnounces(data)
+    }, filters)
+    return () => {
+      if (unsubscribe && typeof unsubscribe === "function") {
+        unsubscribe()
+      }
+    }
+  }, [filters, slug])
+
+  if (!announces || !announces.length) {
+    return (
+      <div className="flex flex-nowrap h-screen w-full items-center justify-center">
+        お知らせはありません
+      </div>
+    )
+  }
+  return (
+    <>
+      <SingleAnnouncePage announce={announces.at(0)}>
+        {announces?.at(0)?.content?.map((c, k) => (
+          <Content content={c} key={k} />
+        ))}
+      </SingleAnnouncePage>
+    </>
+  )
 }

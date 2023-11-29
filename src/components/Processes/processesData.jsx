@@ -59,7 +59,7 @@ const featuresData = [
       <>
         <p>
           ヒアリングと検査を元に、あなたの状態にあった施術内容にカスタマイズして、
-          治療計画を立案し、説明します。
+          計画を立案し、説明します。
         </p>
         <p>
           これには、骨盤の調整や筋肉のトリートメント、運動療法など、
@@ -89,7 +89,7 @@ const featuresData = [
   },
   {
     id: 5,
-    title: "➅ 治療方針と指導",
+    title: "➅ 施術方針と指導",
     image: "/images/features/makise-coaching-square.jpg",
     width: 512,
     height: 512,

@@ -1,3 +1,4 @@
+import { basename } from "path"
 import {
   collection,
   onSnapshot,
@@ -17,41 +18,44 @@ import {
 import { db } from "@/lib/firebase/app"
 import { imageURL } from "@/lib/firebase/storage"
 
-function applyQueryFilters(q, { slug, offset, limitnum, category }) {
+function applyQueryFilters(q, { slug, category, status, ...params }) {
   if (slug) {
-    q = query(q, where("slug", "==", slug))
-  }
-  if (offset > 0) {
-    q = query(q, offset(offset))
-  }
-  if (limit > 0) {
-    q = query(q, limit(limitnum))
+    q = query(q, where("slug", "==", basename(slug)))
   }
   if (category) {
     q = query(q, where("category", "==", category))
   }
+  if (status) {
+    q = query(q, where("status", "==", status))
+  }
+  if (params.offset > 0) {
+    q = query(q, offset(params.offset))
+  }
+  if (params.limit > 0) {
+    q = query(q, limit(params.limit))
+  }
+  // q = query(q, orderBy("createdat", "desc"))
   return q
 }
 
 export async function retrieveAnnounces(filters = {}) {
   const c = query(collection(db, "announces"))
+  filters.status = filters.status ? filters.status : "published"
   const q = applyQueryFilters(c, filters)
   const r = await getDocs(q)
   return r.docs.map((d) => {
     const data = d.data()
-    data.createdat = new Date(d.data().createdat).toLocaleString()
-    data.heroURL = imageURL(data.hero)
+    data.date = new Date(data.createdat.seconds * 1000).toLocaleString()
     return {
       id: d.id,
-      ...data,
-      timestamp: new Date(d.data().timestamp)
+      ...data
     }
   })
 }
 
-export async function retrieveAnnouncesSnapshot(cb, filters = {}) {
+export function retrieveAnnouncesSnapshot(cb, filters = {}) {
   if (typeof cb !== "function") {
-    console.log("Error: The callback parameter is not a function")
+    console.error("Error: The callback parameter is not a function")
     return
   }
   const c = query(collection(db, "announces"))
@@ -59,10 +63,10 @@ export async function retrieveAnnouncesSnapshot(cb, filters = {}) {
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
     const r = querySnapshot.docs.map((d) => {
       const data = d.data()
+      data.date = new Date(data.createdat.seconds * 1000).toLocaleString()
       return {
         id: d.id,
-        ...data,
-        createdat: data.createdat.toDate().toLocaleDateString()
+        ...data
       }
     })
     cb(r)
@@ -72,7 +76,7 @@ export async function retrieveAnnouncesSnapshot(cb, filters = {}) {
 
 export async function announceBySlug(slug) {
   if (!slug) {
-    console.log("Error: Invalid slug received: ", slug)
+    console.error("Error: Invalid slug received: ", slug)
     return
   }
   return await retrieveAnnounces({ slug: slug, limit: 1 })

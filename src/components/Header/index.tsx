@@ -39,28 +39,40 @@ const Header = () => {
         <div className="flex w-full items-center justify-between xl:w-1/4 gap-4">
           <a href="/">
             <Image
-              src="/images/logo/logo-dark.svg"
+              src="/images/logo/logo-sq-dark.svg"
               alt="logo"
-              width={155.6}
+              width={85}
               height={85}
-              className="hidden min-w-[100px] h-[64px] min-h-[64px] dark:block"
+              className="hidden min-w-[64px] h-[64px] min-h-[64px] dark:block"
             />
             <Image
-              src="/images/logo/logo-light.svg"
+              src="/images/logo/logo-sq-light.svg"
               alt="logo"
-              width={155.6}
+              width={85}
               height={85}
-              className="min-w-[100px] h-[64px] min-h-[64px] dark:hidden"
+              className="min-w-[64px] h-[64px] min-h-[64px] dark:hidden"
             />
           </a>
           <div className="md:w-1/2 md:mx-8 md:text-center whitespace-nowrap">
-            <div className="text-xs">ご予約はお電話:8時〜20時</div>
-            <div className="text-xs">(日曜休、水曜午後休)</div>
+            <div className="text-xs">
+              ご予約はお電話か
+              <Link
+                href="https://lin.ee/dIMYuwu"
+                className="bg-lime-500 text-white rounded-lg text-xs p-1"
+              >
+                LINE
+              </Link>
+              で
+            </div>
             <div>
               <span>☏ </span>
               <a href="tel:0292240076" className="text-blue-500 underline">
                 029 224 0076
               </a>
+            </div>
+            <div className="text-xs">
+              <span className="text-xs">(8時〜20時:</span>
+              日曜,水曜午後休)
             </div>
           </div>
 
@@ -161,7 +173,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className="text-xs">
+          <div className="text-xs p-2">
             <Link href="/#lead-magnet">
               <Image
                 data-v-6fa6a74a=""

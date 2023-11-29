@@ -30,11 +30,13 @@ const Magnet = () => {
               viewport={{ once: true }}
               className="animate_left lg:w-1/2"
             >
-              <p>LINEでお友だちになると、ご予約するときに便利です。</p>
-              <p>そして、今なら</p>
               <h2 className="mb-4 w-11/12 text-3xl text-justify font-bold text-black dark:text-white xl:text-sectiontitle4">
-                まきせのストレッチブック
+                LINEでお友だちになると、ご予約するときに便利です。
               </h2>
+              <p>そして、今なら</p>
+              <h3 className="mb-4 w-11/12 text-3xl text-justify font-bold text-black dark:text-white xl:text-sectiontitle4">
+                まきせのストレッチブック
+              </h3>
               <p className="indent-0">PDFをダウンロードしていただけます。</p>
               <p>
                 お仕事中の空いた時間にストレッチして、

@@ -10,28 +10,20 @@ import {
 import SectionHeader from "@/components/Common/SectionHeader"
 import AnnounceItem from "./Item"
 
-console.debug = (...msg) => {
-  /* do nothing */
-}
-
 export default function AnnounceListings({ headerInfo, searchParams }) {
   const router = useRouter()
   const [announces, setAnnounces] = useState([])
-  const [filters, setFilters] = useState(searchParams)
 
   useEffect(() => {
-    console.debug("Filters: ", filters)
     const unsubscribe = retrieveAnnouncesSnapshot((data) => {
-      console.debug("Snapshots: ", data)
       setAnnounces(data)
-    }, filters)
+    })
     return () => {
       if (unsubscribe && typeof unsubscribe === "function") {
-        console.debug("AnnounceListings unsubscribe", typeof unsubscribe)
         unsubscribe()
       }
     }
-  }, [filters, setAnnounces])
+  }, [setAnnounces])
   return (
     <section className="py-20 lg:py-25 xl:py-30">
       <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
@@ -44,6 +36,7 @@ export default function AnnounceListings({ headerInfo, searchParams }) {
 
       <div className="mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0">
         <div className="grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
+          {!announces && <p>お知らせはありません。</p>}
           {announces?.map((announce) => (
             <AnnounceItem key={announce.id} announce={announce} />
           ))}

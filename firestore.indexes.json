@@ -9,8 +9,12 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "createdAt",
+          "fieldPath": "status",
           "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdat",
+          "order": "DESCENDING"
         }
       ]
     }

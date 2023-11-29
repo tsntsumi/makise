@@ -32,23 +32,29 @@ const menuData: Menu[] = [
   },
   {
     id: 4,
+    title: <div className="text-xs underline">お知らせ</div>,
+    newTab: false,
+    path: "/announces"
+  },
+  {
+    id: 5,
     title: <div className="text-xs underline">その他...</div>,
     newTab: false,
     submenu: [
       {
-        id: 4.1,
+        id: 5.1,
         title: <div className="text-xs underline">施術の流れ</div>,
         newTab: false,
         path: "/#processes"
       },
       {
-        id: 4.2,
+        id: 5.2,
         title: <div className="text-xs underline">施術料金</div>,
         newTab: false,
         path: "/#pricing"
       },
       {
-        id: 4.3,
+        id: 5.3,
         title: <div className="text-xs underline">道順</div>,
         newTab: false,
         path: "/#accesses"

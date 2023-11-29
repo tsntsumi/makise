@@ -14,7 +14,7 @@ const Problem = () => {
             headerInfo={{
               title: "",
               subtitle: (
-                <div className="text-3xl text-center text-orange-500">
+                <div className="text-2xl md:text-3xl text-center text-orange-500">
                   「どこへ行っても改善しない」と諦めているあなたへ
                 </div>
               ),

@@ -1,19 +1,19 @@
-"use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import React from "react";
+"use client"
+import { motion } from "framer-motion"
+import Image from "next/image"
+import React from "react"
 
 const Contact = () => {
   /**
    * Source: https://www.joshwcomeau.com/react/the-perils-of-rehydration/
    * Reason: To fix rehydration error
    */
-  const [hasMounted, setHasMounted] = React.useState(false);
+  const [hasMounted, setHasMounted] = React.useState(false)
   React.useEffect(() => {
-    setHasMounted(true);
-  }, []);
+    setHasMounted(true)
+  }, [])
   if (!hasMounted) {
-    return null;
+    return null
   }
 
   return (
@@ -42,13 +42,13 @@ const Contact = () => {
               variants={{
                 hidden: {
                   opacity: 0,
-                  y: -20,
+                  y: -20
                 },
 
                 visible: {
                   opacity: 1,
-                  y: 0,
-                },
+                  y: 0
+                }
               }}
               initial="hidden"
               whileInView="visible"
@@ -160,13 +160,13 @@ const Contact = () => {
               variants={{
                 hidden: {
                   opacity: 0,
-                  y: -20,
+                  y: -20
                 },
 
                 visible: {
                   opacity: 1,
-                  y: 0,
-                },
+                  y: 0
+                }
               }}
               initial="hidden"
               whileInView="visible"
@@ -206,7 +206,7 @@ const Contact = () => {
       </section>
       {/* <!-- ===== Contact End ===== --> */}
     </>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

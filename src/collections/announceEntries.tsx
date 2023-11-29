@@ -1,11 +1,22 @@
-import { buildCollection, buildProperty, buildEnumValues } from "firecms"
+import {
+  buildCollection,
+  buildProperty,
+  buildEnumValues,
+  buildEntityCallbacks
+} from "firecms"
 import { AnnounceEntryPreview } from "@/collections/announceEntryPreview"
 import { AnnounceEntry } from "@/types/announce"
+import CategoriesMap from "./categories.json"
 
-export const categoryEnumeration = buildEnumValues({
-  "holyday": "休業日",
-  "health": "健康"
-})
+export const categoryEnumeration = buildEnumValues(CategoriesMap)
+
+const defaultSlug = () => {
+  const n = Date.now()
+  const u = new Date(n)
+  const z = u.getTimezoneOffset() * 60 * 1000
+  const d = new Date(n - z).toISOString()?.replace(/:/g, "")
+  return d
+}
 
 export const announceCollection = buildCollection<AnnounceEntry>({
   name: "Announce entries",
@@ -26,8 +37,9 @@ export const announceCollection = buildCollection<AnnounceEntry>({
     },
     slug: {
       name: "slug",
-      validation: { required: true },
-      dataType: "string"
+      dataType: "string",
+      readOnly: true,
+      defaultValue: defaultSlug()
     },
     author: {
       name: "作者",
@@ -44,7 +56,7 @@ export const announceCollection = buildCollection<AnnounceEntry>({
     },
     content: {
       name: "内容",
-      description: "お知らせの内容。テキストと画像の配列",
+      description: "お知らせの内容。テキストと画像をいくつか",
       validation: { required: true },
       dataType: "array",
       columnWidth: 400,
@@ -72,7 +84,7 @@ export const announceCollection = buildCollection<AnnounceEntry>({
               }
             }),
             description:
-              "This fields allows uploading multiple images at once and reordering"
+              "複数の画像・写真のファイルを一度に選択してアップロードできます"
           }),
           videos: buildProperty({
             name: "動画",
@@ -89,7 +101,7 @@ export const announceCollection = buildCollection<AnnounceEntry>({
               }
             }),
             description:
-              "This fields allows uploading multiple images at once and reordering"
+              "複数の動画ファイルを一度に選択肢てアップロードできます"
           })
         }
       }

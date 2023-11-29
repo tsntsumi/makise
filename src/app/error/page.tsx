@@ -1,8 +1,8 @@
 import Image from "next/image"
 
 export const metadata = {
-  title: "Error Page - Alizza Ideal Official Blog",
-  description: "This is Error page for Alizza Ideal"
+  title: "エラーページ：まきせ鍼灸整骨院",
+  description: "このページは、まきせ鍼灸整骨院のエラーページです"
   // other metadata
 }
 
