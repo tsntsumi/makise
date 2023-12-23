@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
         function gtag(){ dataLayer.push(arguments); }
         gtag('js', new Date());
 
-        gtag('config', {MEASUREMENTID});
+        gtag('config', ${MEASUREMENTID});
         `}
       </Script>
       {/*<!-- Event snippet for 電話で予約 conversion page
