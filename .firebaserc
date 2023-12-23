@@ -1,5 +1,21 @@
 {
   "projects": {
-    "default": "makise-ab"
-  }
+    "default": "makise-seikotsu-web"
+  },
+  "targets": {
+    "makise-seikotsu-web": {
+      "hosting": {
+        "website": [
+          "website"
+        ],
+        "meet": [
+          "meet"
+        ],
+        "meet-makise": [
+          "meet-makise"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://makise-seikotsu.alizza-ideal.com
-
-# Sitemaps
-Sitemap: https://makise-seikotsu.alizza-ideal.com/sitemap.xml
