@@ -16,19 +16,19 @@ const menuData: Menu[] = [
     id: 2,
     title: <div className="text-xs underline">患者様の声</div>,
     newTab: false,
-    path: "/#testimonial"
+    path: "#testimonial"
   },
   {
     id: 2,
     title: <div className="text-xs underline">自己紹介</div>,
     newTab: false,
-    path: "/#about"
+    path: "#about"
   },
   {
     id: 3,
     title: <div className="text-xs underline">選ばれる理由</div>,
     newTab: false,
-    path: "/#features"
+    path: "#features"
   },
   {
     id: 4,
@@ -45,19 +45,25 @@ const menuData: Menu[] = [
         id: 5.1,
         title: <div className="text-xs underline">施術の流れ</div>,
         newTab: false,
-        path: "/#processes"
+        path: "#processes"
       },
       {
         id: 5.2,
         title: <div className="text-xs underline">施術料金</div>,
         newTab: false,
-        path: "/#pricing"
+        path: "#pricing"
       },
       {
         id: 5.3,
+        title: <div className="text-xs underline">返金保証</div>,
+        newTab: false,
+        path: "#money-back-guarantee"
+      },
+      {
+        id: 5.4,
         title: <div className="text-xs underline">道順</div>,
         newTab: false,
-        path: "/#accesses"
+        path: "#accesses"
       }
     ]
   }

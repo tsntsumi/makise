@@ -125,7 +125,7 @@ const Pricing = () => {
                 </p>
                 <p>
                   <span className="font-black text-red-400 text-2xl">
-                    １２月７日
+                    １２月２０日
                   </span>
                   まで、１日１名限定となります。
                 </p>
@@ -159,6 +159,35 @@ const Pricing = () => {
                     </svg>
                   </button>
                 </Link>
+              </div>
+            </div>
+
+            <div
+              id="money-back-guarantee"
+              className="flex flex-nowrap items-start justify-between"
+            >
+              <Image
+                src="/images/icon/money-back-100.svg"
+                alt="100% money back guarantee"
+                width={512}
+                height={512}
+                className="w-1/3"
+              />
+              <div>
+                <h3>初回施術費の全額返金保証</h3>
+                <p>
+                  初回の施術で効果を実感できなければ、施術費を全額返金します。
+                </p>
+                <p>
+                  ちょっとでも違うと思ったり、効果を実感できなければ、初回の施術が終わった時点でお伝えください。
+                </p>
+                <p>無条件で全額返金します。（初回のみ）</p>
+                <h4>なぜ全額返金保証をするのか？</h4>
+                <p>
+                  なぜなら、わたしの施術の良さをあなたに試してもらいたいから、
+                  安心して施術を受けに来てもらいたいためです。
+                </p>
+                <p>そして、確実に満足していただける自信があるからです。</p>
               </div>
             </div>
           </div>

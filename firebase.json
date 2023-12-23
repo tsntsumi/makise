@@ -9,23 +9,12 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "frameworksBackend": {
-      "region": "us-central1"
-    }
+    ]
   },
   "storage": {
     "rules": "storage.rules"
   },
   "emulators": {
-    "auth": {
-      "host": "192.168.0.10",
-      "port": 9092
-    },
-    "functions": {
-      "host": "192.168.0.10",
-      "port": 5002
-    },
     "firestore": {
       "host": "192.168.0.10",
       "port": 8082
@@ -41,6 +30,24 @@
     "ui": {
       "enabled": true
     },
-    "singleProjectMode": true
-  }
+    "singleProjectMode": true,
+    "functions": {
+      "port": 5002
+    },
+    "auth": {
+      "port": 9099
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    }
+  ]
 }

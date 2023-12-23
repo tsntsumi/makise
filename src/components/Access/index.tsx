@@ -1,5 +1,6 @@
 "use client"
 import React from "react"
+import Script from "next/script"
 import accessesData from "./accessesData"
 import SingleAccess from "./SingleAccess"
 import SectionHeader from "../Common/SectionHeader"
@@ -16,16 +17,7 @@ const Access = () => {
               title: "当院へのアクセス",
               subtitle: "",
               description: (
-                <div className="">
-                  <div>
-                    <iframe
-                      src="https://storage.googleapis.com/maps-solutions-n55ola4yzh/locator-plus/gnf5/locator-plus.html"
-                      width="100%"
-                      height="600"
-                      style={{ border: 0 }}
-                      loading="lazy"
-                    ></iframe>
-                  </div>
+                <div>
                   <div>
                     <h3>営業時間</h3>
                     <p>8:00～12:30、15:00～20:00</p>

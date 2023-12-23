@@ -4,11 +4,11 @@ const brandData: Brand[] = [
   {
     id: 0.25,
     name: "STEP 1",
-    href: "#",
+    href: "/#accesses",
     image: "",
     imageLight: "",
     content: (
-      <div className="opacity-90 transition-all duration-300 hover:opacity-100 border-2 p-0 border-white rounded-xl text-white font-bold m-0 text-base text-center w-full md:w-[180px] whitespace-nowrap">
+      <div className="opacity-90 transition-all duration-300 hover:opacity-100 border-2 p-0 border-white rounded-xl text-white font-bold m-0 text-sm md:text-base text-center w-full md:w-[180px] whitespace-nowrap h-full flex flex-col justify-around">
         <div className="px-1 m-0">水戸日赤病院</div>
         <div className="px-1 m-0">城 東 小 学 校</div>
         <div className="px-1 m-0">近 く</div>
@@ -18,30 +18,37 @@ const brandData: Brand[] = [
   {
     id: 0.3,
     name: "STEP 2",
-    href: "#",
+    href: "/#processes",
     image: "",
     imageLight: "",
     content: (
-      <div className="opacity-90 transition-all duration-300 hover:opacity-100 border-2 p-0 border-white rounded-xl text-white font-bold m-0 text-base text-center w-full md:w-[180px] whitespace-nowrap">
-        <div className="px-1 m-0">
-          <br />
-        </div>
+      <div className="opacity-90 transition-all duration-300 hover:opacity-100 border-2 p-0 border-white rounded-xl text-white font-bold m-0 text-sm md:text-base text-center w-full md:w-[180px] whitespace-nowrap h-full flex flex-col justify-center">
         <div className="px-1 m-0">完全予約制</div>
-        <div className="px-1 m-0">
-          <br />
-        </div>
       </div>
     )
   },
   {
-    id: 0.35,
-    name: "STEP 2",
-    href: "#",
+    id: 0.4,
+    name: "STEP 3",
+    href: "/#money-back-guarantee",
     image: "",
     imageLight: "",
     content: (
-      <div className="opacity-90 transition-all duration-300 hover:opacity-100 border-2 p-0 border-white rounded-xl text-white font-bold m-0 text-base text-center w-full md:w-[180px] whitespace-nowrap">
-        <div className="px-1 m-0 text-base">初回特別施術</div>
+      <div className="opacity-90 transition-all duration-300 hover:opacity-100 border-2 p-0 border-white rounded-xl text-white font-bold m-0 text-sm md:text-base text-center w-full md:w-[180px] whitespace-nowrap h-full flex flex-col justify-around">
+        <div className="px-1 m-0 text-sm md:text-base">初回費用</div>
+        <div className="px-1 m-0 text-sm md:text-2xl">全額返金保証</div>
+      </div>
+    )
+  },
+  {
+    id: 0.5,
+    name: "STEP 4",
+    href: "/#pricing",
+    image: "",
+    imageLight: "",
+    content: (
+      <div className="opacity-90 transition-all duration-300 hover:opacity-100 border-2 p-0 border-white rounded-xl text-white font-bold m-0 text-sm md:text-base text-center w-full md:w-[180px] whitespace-nowrap h-full flex flex-col justify-center">
+        <div className="px-1 m-0 text-sm md:text-base">初回特別施術</div>
         <div className="px-1 m-0 text-2xl">1,980円</div>
         <div className="px-1 m-0 text-xs">12月20日まで</div>
       </div>
