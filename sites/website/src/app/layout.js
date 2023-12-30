@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta
           name="description"
-          content="水戸市で「慢性腰痛」といえば、まきせにお任せ下さい。もし、医師もお手上げの慢性腰痛をたった数回で改善できて再発しないとしたら？ずっと改善されず、もう諦めているなら一度だけわたしを信じて見て下さい"
+          content="水戸市で「慢性のしびれ・痛み」といえば、まきせにお任せ下さい。もし、医師もお手上げのしびれ・痛みをたった数回で改善できて再発しないとしたら？ずっと改善されず、もう諦めているなら一度だけわたしを信じてみて下さい"
         />
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
@@ -37,11 +37,24 @@ export default function RootLayout({ children }) {
         function gtag(){ dataLayer.push(arguments); }
         gtag('js', new Date());
 
-        gtag('config', ${MEASUREMENTID});
+        gtag('config', "${MEASUREMENTID}");
+        `}
+      </Script>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-2HW9H0HZ0D"
+      ></Script>
+      <Script id="google-analytices">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-2HW9H0HZ0D');
         `}
       </Script>
       {/*<!-- Event snippet for 電話で予約 conversion page
-              In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->*/}
+            In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->*/}
       <Script id="gtag-report-conversion">
         {`
         function gtag_report_conversion(url) {

@@ -50,7 +50,8 @@ module.exports = {
         manatee: "#999AA1",
         alabaster: "#FBFBFB",
         zumthor: "#EDF5FF",
-        socialicon: "#D1D8E0"
+        socialicon: "#D1D8E0",
+        linelogo: "#00B900"
       },
       fontSize: {
         metatitle: ["12px", "20px"],

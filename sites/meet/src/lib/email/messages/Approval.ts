@@ -27,10 +27,15 @@ export default function ApprovalEmail({
   )}&body=${encodeURIComponent(
     `こんにちは。${OWNER_NAME}です。
 
-  ${dateSummary} の予定を確認したところ、
+  今回はご予約のお申し込みありがとうございました。
+  
+  しかしながら、${dateSummary} の予定を確認したところ、
   大変申し訳ありませんが、他の予定が入っておりました。
 
-  別の日時をお選びいただけると幸いです。`
+  別の日時をお選びいただけると幸いです。
+
+  予約カレンダー： https://meet-makise.alizza-ideal.com
+  `
   )}`
 
   let body = `<div dir="ltr">`
