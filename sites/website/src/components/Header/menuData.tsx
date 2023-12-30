@@ -5,7 +5,7 @@ const menuData: Menu[] = [
     id: 1,
     title: (
       <div className="text-xs">
-        <div>住所：水戸市城東３丁目</div>
+        <div>水戸市城東３丁目</div>
         <div>城東ロイヤルハイツ103</div>
       </div>
     ),

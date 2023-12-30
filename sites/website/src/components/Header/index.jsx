@@ -72,19 +72,6 @@ const Header = () => {
                 日曜,水曜午後休)
               </div>
             </div>
-            <div className="text-sm flex flex-col justify-start">
-              <div className="text-xs mb-1">または</div>
-              <div>
-                <a
-                  href="https://lin.ee/LuKG3mc"
-                  className="bg-green-500 border border-lime-700 text-white font-bold rounded-xl text-sm p-1"
-                  onClick="gtag_report_conversion('https://lin.ee/LuKG3mc')"
-                >
-                  LINE
-                </a>
-                -&gt;
-              </div>
-            </div>
           </div>
 
           {/* <!-- Hamburger Toggle BTN --> */}
