@@ -26,7 +26,6 @@ export const DEFAULT_DURATION = 30
 export const DEFAULT_DURATION_NAME = DURATION_TO_NAME(DEFAULT_DURATION)
 
 const OWNER_CALENDAR = "hiroto.h.makise@gmail.com"
-// const MEET_MAKISE_CALENDAR = "c_2c5d09c6f431b0519debef3891b03a662b83781bf77224b4ccc77a8cb0980679@group.calendar.google.com"
 const MEET_MAKISE_CALENDAR =
   "c_dcf39dca8a6217a946bec81663e9d460407d8480b46922a1850b4bc1be4b3f34@group.calendar.google.com"
 
@@ -56,7 +55,6 @@ const DEFAULT_WORKDAY = [
   {
     start: {
       hour: 8,
-      minute: 30,
     },
     end: {
       hour: 13,
@@ -77,7 +75,6 @@ const WED_WORKTIME = [
   {
     start: {
       hour: 8,
-      minute: 30,
     },
     end: {
       hour: 13,

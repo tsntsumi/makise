@@ -13,6 +13,8 @@ import { formatLocalTime, formatLocalDate } from "./helpers"
 import type { DateTimeInterval } from "../types"
 import { SLOT_PADDING, LEAD_TIME } from "../../config"
 
+require("firebase-functions/logger/compat")
+
 /**
  * Takes an array of potential slots and an array of busy slots and returns
  * an array of available slots.
@@ -95,10 +97,13 @@ export default function getAvailability({
     if (curr.busy) {
       // do nothing
     } else {
-      if (
-        (acc.busy && interval >= padding && interval <= 60 * 6) ||
-        (!acc.busy && interval === padding)
-      ) {
+      if (acc.busy && interval < padding * 2) {
+        // do nothing
+      } else if (acc.busy && interval > 60 * 6) {
+        // do nothing
+      } else if (!acc.busy && interval !== padding) {
+        // do nothing
+      } else {
         const start = sub(curr.slot?.start, { minutes: padding })
         const end = sub(curr.slot?.end, { minutes: padding })
         curr.slot = { start, end }
