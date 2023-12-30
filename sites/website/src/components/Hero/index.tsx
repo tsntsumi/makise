@@ -18,11 +18,11 @@ const Hero = () => {
           <div className="flex lg:items-start lg:gap-8 xl:gap-32.5">
             <div className="md:w-2/3 md:mx-auto text-justify">
               <div className="h4 mb-8 text-xs md:text-lg text-center font-medium rounded-full bg-orange-500 px-6 py-1 text-white">
-                水戸市で「慢性腰痛」といえば、まきせにお任せください
+                水戸市で「慢性のしびれ・痛み」といえば、まきせにお任せください
               </div>
               <div>
                 <h1 className="mb-5 text-2xl font-bold text-black dark:text-white xl:text-6xl">
-                  もし、医師もお手上げの慢性腰痛を
+                  もし、医師もお手上げの慢性のしびれと痛みを
                   <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark ">
                     たった数回で
                   </span>
@@ -40,7 +40,7 @@ const Hero = () => {
                   <div className="w-2/5 bg-white md:hidden">
                     <Image
                       className="shadow-solid-l rounded-xl dark:hidden object-cover"
-                      src="/images/hero/hero-image.png"
+                      src="/images/hero/hero-images.webp"
                       alt="牧瀬院長"
                       unoptimized
                       width={512}
