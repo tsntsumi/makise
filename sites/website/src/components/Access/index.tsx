@@ -71,6 +71,15 @@ const Access = () => {
             {/* <!-- Accesses item End --> */}
           </div>
         </div>
+        <div className="w-11/12 aspect-square mx-auto">
+          <iframe
+            src="https://storage.googleapis.com/maps-solutions-twdw90a6w6/neighborhood-discovery/75bx/neighborhood-discovery.html"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+          ></iframe>
+        </div>
       </section>
 
       {/* <!-- ===== Accesses End ===== --> */}

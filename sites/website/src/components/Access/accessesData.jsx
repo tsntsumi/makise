@@ -46,9 +46,9 @@ const accessesData = [
   {
     id: 4,
     title: "若宮アパート入口",
-    image: "/images/accesses/bus-stop.jpg",
-    width: 512,
-    height: 288,
+    image: "/images/accesses/road-to-makise.gif",
+    width: 240,
+    height: 427,
     description: (
       <>
         <p>若宮アパート入口で下車して下さい。</p>

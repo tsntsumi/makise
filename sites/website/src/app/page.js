@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image"
+import Head from "next/head"
 
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"

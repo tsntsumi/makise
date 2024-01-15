@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { BookWithLineTalk, BookWithPhoneCall } from "@/components/Common/Book"
 
 const CTA = () => {
   return (
@@ -37,6 +38,14 @@ const CTA = () => {
                 height="512"
                 className="object-cover w-full"
               />
+              <div className="grid grid-cols-2 justify-around items-center p-4 ">
+                <div className="mx-auto">
+                  <BookWithPhoneCall />
+                </div>
+                <div className="mx-auto">
+                  <BookWithLineTalk />
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>

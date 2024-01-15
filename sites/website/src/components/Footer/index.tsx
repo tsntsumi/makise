@@ -9,6 +9,9 @@ const Footer = () => {
         <div id="footer" className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           {/* <!-- Footer Bottom --> */}
           <div className="flex flex-col flex-wrap items-center justify-center gap-5 border-t border-stroke py-7 dark:border-strokedark lg:flex-row lg:justify-between lg:gap-0">
+            <div className="text-center">
+              年末年始の予定：年末は12月29日まで、年始は1月4日から営業しております
+            </div>
             <motion.div
               variants={{
                 hidden: {

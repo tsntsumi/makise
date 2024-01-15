@@ -1,10 +1,11 @@
 "use client"
+import { Suspense } from "react"
 import Head from "next/head"
 import Script from "next/script"
 import Lines from "@/components/Lines"
 import ScrollToTop from "@/components/ScrollToTop"
 import { ThemeProvider } from "next-themes"
-import { analytics } from "@/lib/firebase/app"
+import GoogleTag from "@/lib/googleTag"
 
 import { Inter } from "next/font/google"
 import "./globals.css"
@@ -14,7 +15,6 @@ const inter = Inter({ subsets: ["latin"] })
 import ToasterContext from "@/app/context/ToastContext"
 
 export default function RootLayout({ children }) {
-  const MEASUREMENTID = process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENTID
   return (
     <html lang="ja" suppressHydrationWarning>
       <Head>
@@ -26,52 +26,9 @@ export default function RootLayout({ children }) {
         />
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
-      {/*<!-- Google tag (gtag.js) -->*/}
-      <Script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${MEASUREMENTID}`}
-      ></Script>
-      <Script id="google-tags">
-        {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', "${MEASUREMENTID}");
-        `}
-      </Script>
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-2HW9H0HZ0D"
-      ></Script>
-      <Script id="google-analytices">
-        {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-2HW9H0HZ0D');
-        `}
-      </Script>
-      {/*<!-- Event snippet for 電話で予約 conversion page
-            In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->*/}
-      <Script id="gtag-report-conversion">
-        {`
-        function gtag_report_conversion(url) {
-          var callback = function () {
-            if (typeof(url) != 'undefined') {
-              window.location = url;
-            }
-          };
-          gtag('event', 'conversion', {
-            'send_to': 'AW-11001150539/8o0pCPjc_fsYEMv44P0o',
-            'event_callback': callback
-          });
-          return false;
-        }
-        `}
-      </Script>
       <Script src="https://polyfill.io/v3/polyfill.min.js?features=default"></Script>
+      <GoogleTag />
+      <Suspense ballback={<div></div>}></Suspense>
       <body className={`dark:bg-black ${inter.className}`}>
         <ThemeProvider
           enableSystem={false}

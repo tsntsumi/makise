@@ -1,5 +1,6 @@
 import React from "react"
 import Image from "next/image"
+import Script from "next/script"
 import { motion } from "framer-motion"
 
 const Magnet = () => {
@@ -47,9 +48,8 @@ const Magnet = () => {
                   data-v-6fa6a74a=""
                   href="https://lin.ee/COpvvk1"
                   className="p-4"
-                  onClick="gtag_report_conversion('https://lin.ee/COpvvk1')"
                 >
-                  まきせ鍼灸整骨院の健康ライフ公式アカウントの
+                  まきせ鍼灸整骨院のLINE公式アカウント「まきせの健康ライフ」
                   <Image
                     data-v-6fa6a74a=""
                     src="/images/icon/line-add-friend-ja.png"
@@ -92,7 +92,9 @@ const Magnet = () => {
                     data-v-6fa6a74a=""
                     href="https://lin.ee/COpvvk1"
                     className="p-4"
-                    onClick="gtag_report_conversion('https://lin.ee/COpvvk1')"
+                    onClick={() =>
+                      gtag_report_conversion("https://lin.ee/COpvvk1")
+                    }
                   >
                     <Image
                       alt="line qr"

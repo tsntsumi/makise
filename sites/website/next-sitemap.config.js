@@ -2,5 +2,6 @@
 
 module.exports = {
   siteUrl: "https://makise-seikotsu.alizza-ideal.com",
-  generateRobotsTxt: true
+  generateRobotsTxt: true,
+  exclude: ["/giftset/*", "/land/*"]
 }

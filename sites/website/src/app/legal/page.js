@@ -37,10 +37,9 @@ const LegalPage = () => {
         <dd className="mt-0">
           <div className="link">
             <Link href="tel:0292240076" className="text-[12pt]">
-              0292240076
+              029-224-0076
             </Link>
           </div>
-          <div className="text-[8pt]"></div>
         </dd>
       </dl>
       <h2>その他について</h2>

@@ -1,7 +1,10 @@
 "use client"
 import Image from "next/image"
 import Link from "next/link"
+import Script from "next/script"
 import SectionHeader from "../Common/SectionHeader"
+import { gtag_report_conversion } from "@/lib/googleTag"
+import { BookWithLineTalk, BookWithPhoneCall } from "@/components/Common/Book"
 
 const Pricing = () => {
   return (
@@ -18,9 +21,7 @@ const Pricing = () => {
               headerInfo={{
                 title: `施術料金`,
                 subtitle: (
-                  <div className="mx-auto text-center">
-                    シンプル明解なコース料金
-                  </div>
+                  <div className="mx-auto text-center">ふたつのコース料金</div>
                 ),
                 description: (
                   <>
@@ -30,10 +31,21 @@ const Pricing = () => {
                         <dt className="font-bold">整体コース: </dt>
                         <dd className="ml-8">
                           初回 5,480円、2回目以降 4,480円
+                          <br />
+                          長く続いている腰など痛みや手足のしびれで、
+                          趣味でも生活でも
+                          楽しめなくなっているとお悩みの方のための コースです。
                         </dd>
                         <dt className="font-bold">はり整体コース: </dt>
                         <dd className="ml-8">
                           初回 7,480円、 2回目以降 6,480円
+                          <br />
+                          ずっと腰の痛み、手腕足や指のしびれで悩んでいて、
+                          メンタルまで不調になってきたと
+                          お悩みの方にぴったりのコースです。
+                          <br />
+                          自律神経の乱れで体温調整や汗が止まらない方には
+                          特におすすめです。
                         </dd>
                       </dl>
                     </div>
@@ -143,27 +155,10 @@ const Pricing = () => {
                 </p>
               </div>
               <div className="m-0 p-4 border-2 border-t-0">
-                <Link href="tel:0292240076">
-                  <button
-                    aria-label="Get the Plan button"
-                    className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
-                  >
-                    <span className="duration-300 group-hover/btn:pr-2">
-                      電話で予約する
-                    </span>
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </button>
-                </Link>
+                <BookWithPhoneCall />
+              </div>
+              <div className="m-0 p-4 border-2 border-t-0">
+                <BookWithLineTalk />
               </div>
             </div>
 
@@ -193,28 +188,11 @@ const Pricing = () => {
                 <p>そして、確実に満足していただける自信があるからです。</p>
               </div>
             </div>
-            <div className="m-0 p-4  w-full md:w-2/3 md:mx-auto">
-              <Link href="tel:0292240076">
-                <button
-                  aria-label="Get the Plan button"
-                  className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
-                >
-                  <span className="duration-300 group-hover/btn:pr-2">
-                    電話で予約する
-                  </span>
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </button>
-              </Link>
+            <div className="m-0 p-4 w-full md:w-2/3 md:mx-auto">
+              <BookWithPhoneCall />
+            </div>
+            <div className="m-0 p-4 w-full md:w-2/3 md:mx-auto">
+              <BookWithLineTalk />
             </div>
           </div>
         </div>
