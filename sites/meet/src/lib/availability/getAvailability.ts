@@ -10,7 +10,7 @@ import {
 
 import { formatLocalTime, formatLocalDate } from "./helpers"
 
-import type { DateTimeInterval } from "../types"
+import type { AvailabilitySlotsMap, DateTimeInterval } from "../types"
 import { SLOT_PADDING, LEAD_TIME } from "../../config"
 
 require("firebase-functions/logger/compat")
@@ -33,11 +33,13 @@ export default function getAvailability({
   busy,
   padding = SLOT_PADDING,
   leadTime = LEAD_TIME,
+  availabilitySlots = [],
 }: {
   potential?: DateTimeInterval[]
   busy?: DateTimeInterval[]
   padding?: number
   leadTime?: number
+  availabilitySlots?: AvailabilitySlotsMap
 }): DateTimeInterval[] {
   const openSlots: DateTimeInterval[] = []
 
@@ -62,7 +64,7 @@ export default function getAvailability({
     return slot.start > now
   })
 
-  const reduceSlots: any[] = []
+  const reduceSlots: any[] = [] // Slot array with reserved flag added to potential slots
 
   potential.reduce((acc, curr, index) => {
     const findBusy = (slot: any) =>
@@ -97,7 +99,19 @@ export default function getAvailability({
     if (curr.busy) {
       // do nothing
     } else {
-      if (acc.busy && interval < padding * 2) {
+      const dayOfWeek = new Date().getDay()
+      const slotsForDay = availabilitySlots[dayOfWeek] ?? []
+      const isFirstSlot =
+        slotsForDay.find(
+          (s) =>
+            s.start.hour === new Date(curr.slot?.start).getHours() &&
+            (!s.start.minute ||
+              s.start.minute === new Date(curr.slot?.start).getMinutes())
+        ) !== undefined
+
+      if (isFirstSlot) {
+        // do nothing
+      } else if (acc.busy && interval < padding * 2) {
         // do nothing
       } else if (acc.busy && interval > 60 * 6) {
         // do nothing
