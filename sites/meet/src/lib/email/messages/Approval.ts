@@ -6,18 +6,14 @@ const LINE_SUFFIX = `</div>`
 export default function ApprovalEmail({
   email,
   name,
-  location,
   dateSummary,
   approveUrl,
-  timeZone,
   messageText,
 }: {
   dateSummary: string
   email: string
   name: string
-  location: string
   approveUrl: string
-  timeZone: string
   messageText: string
 }) {
   const SUBJECT = `${name}様から予約が申し込まれました`
@@ -34,7 +30,7 @@ export default function ApprovalEmail({
 
   別の日時をお選びいただけると幸いです。
 
-  予約カレンダー： https://meet-makise.alizza-ideal.com
+  予約カレンダー： https://meet-up-makise.web.app
   `
   )}`
 

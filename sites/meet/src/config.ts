@@ -57,8 +57,12 @@ const DEFAULT_WORKDAY = [
       hour: 8,
     },
     end: {
-      hour: 13,
-      minute: 0,
+      hour: 12,
+      minute: 30,
+    },
+    close: {
+      hour: 14,
+      minute: 45,
     },
   },
   {
@@ -67,7 +71,11 @@ const DEFAULT_WORKDAY = [
     },
     end: {
       hour: 20,
-      minute: 30,
+      minute: 0,
+    },
+    close: {
+      hour: 23,
+      minute: 59,
     },
   },
 ]
@@ -77,8 +85,12 @@ const WED_WORKTIME = [
       hour: 8,
     },
     end: {
-      hour: 13,
-      minute: 0,
+      hour: 12,
+      minute: 30,
+    },
+    close: {
+      hour: 23,
+      minute: 59,
     },
   },
 ]
