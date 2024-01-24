@@ -49,7 +49,11 @@ function Page({
     busy: mapStringsToDates(busy),
   })
 
-  const slots = potential.filter((slot, index) => {
+  const offer = potential.filter((slot) => {
+    return slot.start > new Date()
+  })
+
+  const slots = offer.filter((slot, index) => {
     return (
       slot.start >= startDay.toInterval().start &&
       slot.end <= endDay.toInterval().end
