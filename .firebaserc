@@ -1,18 +1,13 @@
 {
-  "projects": {
-    "default": "makise-seikotsu-web"
-  },
+  "projects": {},
   "targets": {
     "makise-seikotsu-web": {
       "hosting": {
         "website": [
-          "website"
+          "makise-seikotsu-web"
         ],
         "meet": [
-          "meet"
-        ],
-        "meet-makise": [
-          "meet-makise"
+          "meet-up-makise"
         ]
       }
     }

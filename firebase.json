@@ -5,7 +5,7 @@
   },
   "hosting": [
     {
-      "site": "makise-seikotsu",
+      "target": "website",
       "source": "sites/website",
       "ignore": [
         "firebase.json",
@@ -17,7 +17,7 @@
       }
     },
     {
-      "site": "meet-makise",
+      "target": "meet",
       "source": "sites/meet",
       "ignore": [
         "firebase.json",
