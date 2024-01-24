@@ -4,8 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-      "site": "meet-up-makise",
-      "source": "./sites/meet",
+      "source": "sites/meet",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -41,17 +40,5 @@
     "auth": {
       "port": 9094
     }
-  },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ]
-    }
-  ]
+  }
 }

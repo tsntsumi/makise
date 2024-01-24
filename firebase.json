@@ -3,9 +3,10 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
-  "hosting": {
-      "site": "meet-up-makise",
-      "source": "sites/meet",
+  "hosting": [
+    {
+      "site": "makise-seikotsu",
+      "source": "sites/website",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -15,6 +16,19 @@
         "region": "us-central1"
       }
     },
+    {
+      "site": "meet-makise",
+      "source": "sites/meet",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "frameworksBackend": {
+        "region": "us-central1"
+      }
+    }
+  ],
   "storage": {
     "rules": "storage.rules"
   },
@@ -41,17 +55,5 @@
     "auth": {
       "port": 9099
     }
-  },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ]
-    }
-  ]
+  }
 }
