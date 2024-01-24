@@ -21,7 +21,7 @@ export const EMAIL_BCC = ["meet-makise@alizza-ideal.com"]
 export const DURATION_TO_NAME = (duration: number) =>
   MENU_ITEMS.find((item) => item.duration === duration)?.name
 
-// スロットの分数の初期値（何も指定していないばあの分数）
+// スロットの分数の初期値（何も指定していない場合の分数）
 export const DEFAULT_DURATION = 30
 export const DEFAULT_DURATION_NAME = DURATION_TO_NAME(DEFAULT_DURATION)
 
@@ -48,7 +48,7 @@ export const OWNER_TIMEZONE = "Asia/Tokyo"
 export const LEAD_TIME = 120
 
 export const OFFER_OFFSET = 0
-export const OFFER_DAYS = 21
+export const OFFER_DAYS = 30
 
 // １日の営業時間
 const DEFAULT_WORKDAY = [
@@ -83,7 +83,7 @@ const WED_WORKTIME = [
   },
 ]
 
-// 一週間のそれぞれの曜日の営業時間（0 = 月、1 = 火、6 = 日）
+// 一週間のそれぞれの曜日の営業時間（0 = 日、1 = 月、6 = 土）
 // 指定しなければ休業日
 export const OWNER_AVAILABILITY: AvailabilitySlotsMap = {
   1: DEFAULT_WORKDAY,
