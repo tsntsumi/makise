@@ -28,7 +28,7 @@ export default function Template() {
           alt="Avatar Image"
           width="92"
           height="92"
-          classname="w-full object-cover"
+          className="w-full object-cover"
         />
       </div>
 
@@ -40,7 +40,7 @@ export default function Template() {
       </p>
       <div className={`${campaignDisplay}`}>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-accent-800 sm:text-3xl">
-          まきせのゆがみ・しびれのお悩み解決施術体験会（1980円＠2/14〜2/28）参加申込方法
+          まきせのゆがみ・しびれのお悩み解決施術体験会（2/14〜2/28）参加申込方法
         </h2>
         <p className="mt-2 text-sm text-gray-800 font-medium">
           体験会にご参加希望の方は、整体コース（初回）:
@@ -59,7 +59,7 @@ export default function Template() {
       </div>
       <div className={`${announceDisplay}`}>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-accent-800 sm:text-3xl">
-          まきせのゆがみ・しびれのお悩み解決施術体験会（1980円＠2/14〜2/28）締め切りました
+          まきせのゆがみ・しびれのお悩み解決施術体験会（2/14〜2/28）締め切りました
         </h2>
         <p className="mt-2 text-sm text-gray-800 font-medium">
           体験会のお申し込みを締め切りました。
@@ -74,7 +74,7 @@ export default function Template() {
       </div>
       <div className={`${thanksDisplay}`}>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-accent-800 sm:text-3xl">
-          まきせのゆがみ・しびれのお悩み解決施術体験会（1980円＠2/14〜2/28）終了しました
+          まきせのゆがみ・しびれのお悩み解決施術体験会（2/14〜2/28）終了しました
         </h2>
         <p className="mt-2 text-sm text-gray-800 font-medium">
           体験会にご参加いただいたみなさま、ありがとうございました。
