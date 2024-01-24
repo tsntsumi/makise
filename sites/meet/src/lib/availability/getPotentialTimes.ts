@@ -5,6 +5,7 @@
  */
 import {
   addMinutes,
+  subMinutes,
   eachDayOfInterval,
   areIntervalsOverlapping,
   set,
@@ -13,18 +14,20 @@ import {
 import type Day from "../day"
 import type { AvailabilitySlotsMap, DateTimeInterval } from "../types"
 import mergeOverlappingIntervals from "./mergeOverlappingIntervals"
-import { OWNER_TIMEZONE } from "@/config"
+import { OWNER_TIMEZONE, SLOT_PADDING } from "@/config"
 
 export default function getPotentialTimes({
   start,
   end,
   duration,
   availabilitySlots,
+  busy: busyTimes,
 }: {
   start: Day
   end: Day
   duration: number
   availabilitySlots: AvailabilitySlotsMap
+  busy: DateTimeInterval[]
 }): DateTimeInterval[] {
   const intervals: DateTimeInterval[] = []
 
@@ -59,15 +62,25 @@ export default function getPotentialTimes({
       })
 
       let currentIntervalStart = slotStart
-      const currentIntervalEnd = addMinutes(currentIntervalStart, duration)
 
-      while (currentIntervalStart < slotEnd && currentIntervalEnd <= slotEnd) {
-        intervals.push({
+      while (currentIntervalStart <= slotEnd) {
+        const currentIntervalEnd = addMinutes(currentIntervalStart, duration)
+        const interval: DateTimeInterval = {
           start: currentIntervalStart,
           end: currentIntervalEnd,
+          busy: undefined,
+        }
+        interval.busy = busyTimes?.find((b) => {
+          const start = subMinutes(b.start, SLOT_PADDING)
+          const end = addMinutes(b.end, SLOT_PADDING)
+          return areIntervalsOverlapping(interval, { start, end })
         })
-
-        currentIntervalStart = currentIntervalEnd
+        if (!interval.busy) {
+          intervals.push(interval)
+          currentIntervalStart = currentIntervalEnd
+        } else {
+          currentIntervalStart = addMinutes(interval.busy?.end, SLOT_PADDING)
+        }
       }
     }
   })

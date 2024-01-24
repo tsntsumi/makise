@@ -46,15 +46,10 @@ function Page({
     end: endDay,
     duration,
     availabilitySlots: OWNER_AVAILABILITY,
-  })
-
-  const offers = getAvailability({
     busy: mapStringsToDates(busy),
-    potential,
-    availabilitySlots: OWNER_AVAILABILITY,
   })
 
-  const slots = offers.filter((slot, index) => {
+  const slots = potential.filter((slot, index) => {
     return (
       slot.start >= startDay.toInterval().start &&
       slot.end <= endDay.toInterval().end
