@@ -25,3 +25,59 @@ FireCMSに依存してしまうのもどうかと思っている。
 
 サイズが大きくなりがちなので、Gitで管理しないようにしたい。
 そのため、Firebase Storageに格納するようにしている。
+
+## 複数サイトプロジェクト
+
+このプロジェクトには２つのWebサイトがある。
+
+１つはホームページ( sites/website )、もう一つは予約カレンダー( sites/meet )。
+
+これらのデプロイターゲットは .firebaserc で構成され、
+各機能(firestore, hosting, storage, emulators)は、
+firebase.json で構成される。
+
+サイトは、FirebaseコンソールでGUIで作成できる他、
+CLIからも作成できる。GUIのほうが簡単なのでそちらで作成した。
+
+CLIから、どんなサイトがあるか表示するには、以下を実行する。
+
+    firebase hosting:sites:list
+
+作成したサイトのターゲット名は、CLIで作成する。
+サイト makise-seikotsu-web の hosting をデプロイするターゲット名を
+website にするには、以下を実行する。
+
+    firebase target:apply hosting website makise-seikotsu-web
+    
+サイト meet-up-makise の hosting のデプロイターゲット名を meet にするには、
+以下を実行する。
+
+    firebase target:apply hosting meet meet-up-makise
+
+複数サイトの構成は、firebase.json の hosting キーを配列にして構成を記述する。
+
+    file: firebase.json
+    -------------------
+      "hosting": [
+        {
+          "target": "website",
+          "source": "sites/website",
+          // ...
+        },
+        {
+          "target": "meet",
+          "source": "sites/meet",
+          // ...
+        }
+      ],
+      
+各種実行方法
+
+emulator:
+    firebase emulators:start --only hositng:website
+
+deploy:
+    firebase deploy --only hosting:meet
+
+プレビューチャンネルにデプロイ
+    firebase hosting:channel:deploy makise-web --only makise-web
