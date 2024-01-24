@@ -86,11 +86,9 @@ export default async function handler(
 
   // If we have a link to the event, take us there.
   if (match && match[1]) {
-    res.redirect(
-      `/booked?url=${encodeURIComponent(match[1])}&name=${encodeURIComponent(
-        name
-      )}`
-    )
+    const uri = encodeURIComponent(match[1])
+    const encodedName = encodeURIComponent(name)
+    res.redirect(`/booked?url=${uri}&name=${encodedName}`)
 
     return
   }
