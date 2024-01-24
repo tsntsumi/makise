@@ -10,6 +10,7 @@ import ConfirmationEmail from "@/lib/email/messages/Confirmation"
 import getHash from "@/lib/hash"
 import type { DateTimeIntervalWithTimezone } from "@/lib/types"
 
+const logger = require("firebase-functions/logger")
 require("firebase-functions/logger/compat")
 
 // Define the rate limiter
@@ -30,7 +31,7 @@ const AppointmentRequestSchema = z.object({
     message: "End must be a valid date.",
   }),
   timeZone: z.string(),
-  // location: z.enum(["meet", "phone", "visit"]),
+  location: z.enum(["meet", "phone", "visit"]),
   duration: z
     .string()
     .refine((value) => !Number.isNaN(Number.parseInt(value)), {
@@ -68,8 +69,6 @@ export default async function handler(
 
   const start = new Date(data.start)
   const end = new Date(data.end)
-  const email = data.email
-  const name = data.name
 
   const approveUrl = `${
     req.headers.origin ?? "?"
@@ -79,8 +78,7 @@ export default async function handler(
 
   // Generate and send the approval email
   const approveEmail = ApprovalEmail({
-    email,
-    name,
+    ...data,
     approveUrl,
     dateSummary: intervalToHumanString({
       start,

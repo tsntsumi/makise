@@ -7,8 +7,6 @@ export type AvailabilitySlot = {
   start: { hour: number; minute?: number }
   /** Ending hour and minute (in the owner’s timezone) */
   end: { hour: number; minute?: number }
-  /** Closing hour and minute (in the owner’s timezone) */
-  close: { hour: number; minute?: number }
 }
 
 /**

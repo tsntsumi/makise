@@ -56,11 +56,6 @@ export default function getPotentialTimes({
         minutes: slot.end.minute,
       })
 
-      const slotClose = set(day, {
-        hours: slot.close.hour,
-        minutes: slot.close.minute,
-      })
-
       let currentIntervalStart = slotStart
 
       while (currentIntervalStart <= slotEnd) {
