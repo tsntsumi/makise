@@ -11,11 +11,6 @@ export default function DurationPicker() {
 
   return (
     <div>
-      <label
-        htmlFor="duration"
-        className="block text-sm font-medium leading-0 text-gray-900">
-        コース:
-      </label>
       <div className="isolate inline-flex rounded-md shadow-sm mt-1">
         {MENU_ITEMS.map((item, i) => (
           <button
