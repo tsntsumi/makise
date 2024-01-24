@@ -15,7 +15,6 @@ import {
   OWNER_AVAILABILITY,
 } from "@/config"
 import { useProvider, withProvider } from "@/context/AvailabilityContext"
-import getAvailability from "@/lib/availability/getAvailability"
 import getBusyTimes from "@/lib/availability/getBusyTimes"
 import getPotentialTimes from "@/lib/availability/getPotentialTimes"
 import {
