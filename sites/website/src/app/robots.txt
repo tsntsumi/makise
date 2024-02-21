@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /giftset/thanks
+Disallow: /land/
+
+# Host
+Host: https://makise-seikotsu.com
+
+# Sitemaps
+Sitemap: https://makise-seikotsu.com/sitemap.xml

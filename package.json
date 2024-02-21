@@ -1,9 +1,22 @@
 {
+  "name": "makise-seikotsu-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "(cd sites/website && npm run next dev)",
+    "start": "(cd sites/website && npm run start)",
+    "devmeet": "(cd sites/meet && npm run next dev)",
+    "startmeet": "(cd sites/meet && npm run start)",
+    "build": "for s in website meet; do (cd $s && npm run build); done",
+    "lint": "for s in website meet; do (cd $s && npm run lint); done"
+  },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.23.10",
     "@types/gtag.js": "^0.0.18",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
     "autoprefixer": "^10.4.17",
+    "eslint-config-next": "^14.1.0",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6"
   },
@@ -11,8 +24,6 @@
     "@types/node": "^20.11.6",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
-    "eslint": "^8.56.0",
-    "eslint-config-next": "^14.1.0",
     "framer-motion": "^10.16.16"
   }
 }

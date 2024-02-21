@@ -10,7 +10,7 @@ const About = () => {
       {/* <!-- ===== About One Start ===== --> */}
       <section
         id="about"
-        className="overflow-hidden pt-20 pb-6 lg:pb-10 xl:pb-16"
+        className="overflow-hidden pt-24 pb-6 lg:pb-10 xl:pb-16"
       >
         <div className="mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
           <div className="flex items-center gap-8 lg:gap-32.5 flex-wrap md:flex-nowrap">
@@ -381,26 +381,34 @@ const About = () => {
                 <p>
                   それ以来先生は熱心にソフト整体PATに取り組まれ、骨盤、胸椎、頸椎の認定試験を優秀な成績で合格されて全身の骨格矯正をマスターされました。
                 </p>
-
+                <h3>
+                  牧瀬先生は技術のみならず原理も理解され、臨床に応用されてます
+                </h3>
                 <p>
                   牧瀬先生はゆがみ取りSPATの技術のみならず、その理論的裏づけである操体法の思想「操体原理」に対しても大変深い理解をお持ちで、臨床にもしっかり応用されています。
                 </p>
                 <p>
-                  操体原理は、私の恩師橋本敬三医師が創案した「気持ちよかったは、体によい」という大変シンプルな原理ですが、治療や生活習慣改善の指針として非常に応用範囲が広いものです。
+                  操体原理は、私の恩師橋本敬三医師が創案した
+                  <strong>「気持ちよかったは、体によい」</strong>
+                  という大変シンプルな原理ですが、治療や生活習慣改善の指針として非常に応用範囲が広いものです。
                 </p>
+                <h4>気持ちよく、安全に歪みを矯正されています</h4>
                 <p>
-                  操体原理を基盤として開発した骨格矯正法「ソフト整体SPAT」は、動きの分析で正確な歪み診断をおこないますので、非常に安全な歪み矯正ができる手技療法です。
+                  操体原理を基盤として開発した骨格矯正法「ソフト整体SPAT」は、動きの分析で正確な歪み診断をおこないますので、
+                  <strong>非常に安全</strong>な歪み矯正ができる手技療法です。
                 </p>
                 <p>
                   専門家向けDVDと関連書籍は累計約6500部販売され、医師を含め全国の臨床家の治療に取り入れられています。
                 </p>
 
+                <h3>痛みをとった上、日常生活もより快適に</h3>
                 <p>
                   先生は、全身歪みの元となる骨盤･胸椎･頸椎の歪みを取って痛みを取るのみならず、柔軟性も高め、日常生活を快適に過ごせるようにされています。
                 </p>
                 <p className="my-2">
                   牧瀬先生は、長年にわたり医療専門学校で講師ならびに付属整骨院の院長を務め、高い施術技法のみならず広く深い医学知識、優れた診断能力をお持ちです。一般的な治療で改善が困難な症状でも劇的な効果を多く示されてきました。
                 </p>
+                <h3>自信を持って推薦します</h3>
                 <p>
                   見かけはちょっとがっしりしていますが、笑顔が素敵でお人柄も非常に優しい方です。
                   私が自信を持って推薦いたします。
@@ -443,8 +451,9 @@ const About = () => {
                 width={142}
                 height={184}
               />
-              <div className="md:mx-16">
-                SPAT UNION CLUB会長･誠快醫院院長 鹿島田 忠史 医師
+              <div className="flex flex-wrap items-center justify-center">
+                <span>SPAT UNION CLUB会長</span>･<span>誠快醫院院長</span>{" "}
+                <span>鹿島田 忠史 医師</span>
               </div>
             </motion.div>
           </div>
@@ -455,90 +464,136 @@ const About = () => {
       {/* <!-- ===== About Five Start ===== --> */}
       <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
         <div className="mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
-          <div className="flex items-center gap-8 lg:gap-32.5 flex-wrap md:flex-nowrap">
-            <motion.div
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  x: -20
-                },
+          <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
+            牧瀬洋人院長の経歴と資格
+          </h2>
+          <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+                x: -20
+              },
 
-                visible: {
-                  opacity: 1,
-                  x: 0
-                }
-              }}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="animate_left relative mx-auto items-center justify-center block w-full"
-            >
-              <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
-                牧瀬洋人院長の経歴と資格
-              </h2>
-              <h3>経歴</h3>
+              visible: {
+                opacity: 1,
+                x: 0
+              }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="animate_left relative mx-auto items-center justify-center block w-full"
+          >
+            <div className="flex flex-wrap items-start justify-between">
               <div>
+                <h3>経歴</h3>
                 <ul>
                   <li>日本柔道整復専門学校 柔道整復科卒業</li>
                   <li>日本健康医療専門学校 鍼灸科卒業</li>
                 </ul>
               </div>
-              <h3>職歴</h3>
               <div>
+                <h3>職歴</h3>
                 <ul>
                   <li>東京都内整形外科 勤務</li>
                   <li>埼玉県内接骨院 勤務</li>
                   <li>中央医療学園専門学校附属整骨院 元院長</li>
                 </ul>
               </div>
-              <h3>講師歴</h3>
               <div>
+                <h3>講師歴</h3>
                 <ul>
                   <li>大東医学技術専門学校 元講師</li>
                   <li>中央医療学園専門学校 元講師</li>
                   <li>大宮医療専門学院 元非常勤講師</li>
                 </ul>
               </div>
-              <div className="md:mx-16"></div>
-            </motion.div>
-            <motion.div
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  x: 20
-                },
+            </div>
+          </motion.div>
+          <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+                x: 20
+              },
 
-                visible: {
-                  opacity: 1,
-                  x: 0
-                }
-              }}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="animate_right md:w-1/2"
-            >
-              <h3>国家資格</h3>
+              visible: {
+                opacity: 1,
+                x: 0
+              }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="animate_right relative mx-auto items-center block w-full"
+          >
+            <div className="flex flex-wrap items-start justify-between">
               <div>
+                <h3>国家資格</h3>
                 <ul>
-                  <li>柔道整復師(国家資格）</li>
-                  <li>はり師（国家資格）</li>
-                  <li>きゅう師（国家資格）</li>
+                  <li>
+                    柔道整復師(国家資格）
+                    <Image
+                      src="/images/about/judo-seihukushi-lisence.png"
+                      width="512"
+                      height="363"
+                      alt="柔道整復師免許証（国家資格）"
+                      className="object-cover mx-auto w-1/2 max-w-[512px]"
+                    />
+                  </li>
+                  <li>
+                    はり師（国家資格）
+                    <Image
+                      src="/images/about/harishi-lisence.png"
+                      width="512"
+                      height="363"
+                      alt="はり師免許証（国家資格）"
+                      className="object-cover mx-auto w-1/2 max-w-[512px]"
+                    />
+                  </li>
+                  <li>
+                    きゅう師（国家資格）
+                    <Image
+                      src="/images/about/kyushi-lisence.png"
+                      width="512"
+                      height="363"
+                      alt="きゅう師免許証（国家資格）"
+                      className="object-cover mx-auto w-1/2 max-w-[512px]"
+                    />
+                  </li>
                 </ul>
               </div>
-              <h3>資格</h3>
               <div>
+                <h3>資格</h3>
                 <ul>
                   <li>柔道五段</li>
                   <li>柔道整復師専科教員免許</li>
-                  <li>SPATマスターセラピスト</li>
-                  <li>認定SPAT指導講師</li>
+                  <li>
+                    SPATマスターセラピスト
+                    <Image
+                      src="/images/about/spat-master-certificate.png"
+                      width="363"
+                      height="512"
+                      alt="SPATマスターセラビスト認定証"
+                      className="object-cover mx-auto w-1/2 max-w-[512px]"
+                    />
+                  </li>
+                  <li>
+                    認定SPAT指導講師
+                    <Image
+                      src="/images/about/spat-trainer-certificate.png"
+                      width="363"
+                      height="512"
+                      alt="認定SPAT指導講師認定証"
+                      className="object-cover mx-auto w-1/2 max-w-[512px]"
+                    />
+                  </li>
                 </ul>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
       {/* <!-- ===== About Five End ===== --> */}

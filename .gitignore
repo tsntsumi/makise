@@ -43,3 +43,11 @@ firebase-config.js
 emulatorsData/
 /sites/website/.next
 *.bak
+/sites/website/public/.well-known/
+/sites/old-*/
+/sites/website/.env
+/sites/website/.env*.local
+/sites/website/.firebaserc
+/sites/website/.gitignore
+.env
+.env

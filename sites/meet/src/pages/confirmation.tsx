@@ -1,6 +1,15 @@
+import Image from "next/image"
+
 export default function Confirmation() {
   return (
     <div className="py-8 sm:py-16 mx-auto max-w-2xl">
+      <Image
+        src="/images/makise-welcome.jpg"
+        alt="まきせ院長"
+        width="256"
+        height="128"
+        className="float-right ml-2 mb-2"
+      />
       <h1 className="text-3xl font-bold tracking-tight text-accent-700 sm:text-5xl">
         ご予約のお申し込み、ありがとうございます。
       </h1>
@@ -16,7 +25,8 @@ export default function Confirmation() {
             緊急の予定が入っていてお申し込みを受けられないといったことがないことを確認します。
           </div>
           <div>
-            確認は、施術の合間に行いますので、回答が遅くなる場合がございます。
+            施術の合間に確認を行いますので、回答が遅くなる場合がございます。
+            夜間や休日でも、時間が許す限り確認をしておりますので、しばらくお待ちください。
           </div>
           <div>ご迷惑をおかけしますが、ご理解の程をお願いいたします。</div>
         </dd>
@@ -32,7 +42,7 @@ export default function Confirmation() {
           </div>
           <div>
             ご予約日が近づきますと、お手元に通知が届くようになっています。
-            ご予約日時の備忘としてお使い下さい
+            ご予約日時の備忘としてお使い下さい。
           </div>
         </dd>
         <dt>3. ご予約できない場合</dt>
@@ -45,12 +55,12 @@ export default function Confirmation() {
           </div>
           <div>
             その際には、大変お手数をおかけしますが、もう一度
-            別の日時でご予約をしていただけると幸いです。
+            別の日時をお選びいただいて、ご予約をしていただけると幸いです。
           </div>
           <div>よろしくお願いいたします。</div>
         </dd>
       </dl>
-      <div>それでは、お体をお大事になさって下さい</div>
+      <div>それでは、お体をお大事になさって下さい。</div>
     </div>
   )
 }

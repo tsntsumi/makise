@@ -14,15 +14,15 @@ import { testimonialData } from "./testimonialData"
 const Testimonial = () => {
   return (
     <>
-      <section id="testimonial">
-        <div className="mx-auto mt-20 max-w-c-1315 px-4 md:px-8 xl:px-0">
+      <section id="testimonial" className="pt-24">
+        <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
           {/* <!-- Section Title Start --> */}
           <div className="animate_top mx-auto text-center">
             <SectionHeader
               headerInfo={{
                 title: `クチコミ`,
                 subtitle: `患者様からの喜びの声が、信頼の証です`,
-                description: `最近頂いたクチコミを、新しいものからいくつかご紹介します。`
+                description: `最近頂いたクチコミを、新しいものからいくつか抜粋してご紹介します。`
               }}
             />
           </div>
@@ -61,7 +61,7 @@ const Testimonial = () => {
                 clickable: true
               }}
               navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
+              modules={[Pagination, Navigation]}
               breakpoints={{
                 // when window width is >= 640px
                 0: {

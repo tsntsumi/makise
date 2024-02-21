@@ -1,6 +1,6 @@
 {
-  "extends": "next/core-web-vitals",
-  "extends": "next",
+  "extends": ["next", "next/core-web-vitals"],
+  "parser": "@babel/eslint-parser",
   "ignorePatterns": ["*.config.js"],
   "rules": {
     "react/no-unescaped-entities": "off",

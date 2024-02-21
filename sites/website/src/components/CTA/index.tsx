@@ -1,7 +1,11 @@
 import React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { BookWithLineTalk, BookWithPhoneCall } from "@/components/Common/Book"
+import {
+  BookWithLineTalk,
+  BookWithCalendar,
+  BookWithPhoneCall
+} from "@/components/Common/Book"
 
 const CTA = () => {
   return (
@@ -31,19 +35,20 @@ const CTA = () => {
               viewport={{ once: true }}
               className="animate_left w-full"
             >
-              <Image
-                src="/images/features/makise-call-to-action.svg"
-                alt="予約しよう"
-                width="720"
-                height="512"
-                className="object-cover w-full"
-              />
-              <div className="grid grid-cols-2 justify-around items-center p-4 ">
-                <div className="mx-auto">
-                  <BookWithPhoneCall />
-                </div>
-                <div className="mx-auto">
-                  <BookWithLineTalk />
+              <div className="w-full relative">
+                <Image
+                  src="/images/features/makise-call-to-action.svg"
+                  alt="予約して、まきせの整体を試してみる"
+                  width="720"
+                  height="512"
+                  className="object-cover w-full"
+                />
+                <div className="absolute bottom-0 right-0 px-0 md:px-18 py-1 w-5/6">
+                  <div className="flex flex-rows flex-nowrap justify-around items-center p-0 m-0">
+                    <BookWithCalendar />
+                    <BookWithPhoneCall />
+                    <BookWithLineTalk />
+                  </div>
                 </div>
               </div>
             </motion.div>

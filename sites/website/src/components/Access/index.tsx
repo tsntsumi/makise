@@ -1,15 +1,103 @@
 "use client"
 import React from "react"
+import { useState, useEffect } from "react"
+import Image from "next/image"
+import {
+  GoogleMap,
+  LoadScript,
+  MarkerF,
+  InfoWindowF
+} from "@react-google-maps/api"
 import Script from "next/script"
 import accessesData from "./accessesData"
 import SingleAccess from "./SingleAccess"
 import SectionHeader from "../Common/SectionHeader"
 
+const containerStyle = { width: "100%", height: "100%" }
+const iconbase = "/images/icon/"
+const home = {
+  title: "まきせ鍼灸整骨院",
+  position: { lat: 36.372354763598125, lng: 140.49922758891987 },
+  url: iconbase + "home-pin.svg",
+  width: 48,
+  height: 48
+}
+const parking = {
+  title: "まきせ専用駐車場",
+  position: { lat: 36.372609063275725, lng: 140.499390533115 },
+  url: iconbase + "parking-pin.svg",
+  width: 24,
+  height: 24,
+  originX: 15,
+  originY: 30
+}
+const infoStyle = {
+  background: "white",
+  fontSize: 7.5
+}
+const center = home.position
+const zoom = 16
+
+const Map = () => {
+  const APIKEY = process.env.NEXT_PUBLIC_FIREBASE_APIKEY
+  const [size, setSize] = useState<undefined | google.maps.Size>(undefined)
+  const [icon, setIcon] = useState<undefined | google.maps.Icon>(undefined)
+  const [label, setLabel] = useState<undefined | any>(undefined)
+  const infoWindowOptions = {
+    pixelOffset: size
+  }
+  const createOffsetSize = () => setSize(new google.maps.Size(0, -45))
+  useEffect(() => {
+    if (!size) {
+      return
+    }
+    const parkingIcon = {
+      url: parking.url,
+      scaledSize: new window.google.maps.Size(parking.width, parking.height),
+      labelOrigin: new window.google.maps.Point(15, 30)
+    }
+    const parkingLabel = {
+      text: parking.title,
+      color: "#fff",
+      fontSize: "10px",
+      className: "bg-green-800 px-1 rounded-lg w-full text-center mx-auto"
+    }
+    setIcon(parkingIcon)
+    setLabel(parkingLabel)
+  }, [size])
+  return (
+    <LoadScript googleMapsApiKey={APIKEY} onLoad={() => createOffsetSize()}>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={zoom}>
+        <MarkerF position={home.position} />
+        <MarkerF position={parking.position} icon={icon} label={label} />
+        <InfoWindowF position={home.position} options={infoWindowOptions}>
+          <div style={infoStyle}>
+            <Image
+              src={home.url}
+              width={home.width}
+              height={home.height}
+              alt={home.title}
+              className="inline mx-2"
+            />
+            <span color={"green.400"} className="font-bold text-sm">
+              {home.title}
+            </span>
+          </div>
+        </InfoWindowF>
+      </GoogleMap>
+    </LoadScript>
+  )
+}
+
 const Access = () => {
+  const apikey = process.env.NEXT_PUBLIC_FIREBASE_APIKEY
+
+  const query = encodeURI("まきせ鍼灸整骨院")
+  const origin = encodeURI("水戸駅")
   return (
     <>
       {/* <!-- ===== Accesses Start ===== --> */}
-      <section id="accesses" className="py-20 lg:py-25 xl:py-30">
+      <section id="accesses" className="pt-24">
         <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
           {/* <!-- Section Title Start --> */}
           <SectionHeader
@@ -71,14 +159,8 @@ const Access = () => {
             {/* <!-- Accesses item End --> */}
           </div>
         </div>
-        <div className="w-11/12 aspect-square mx-auto">
-          <iframe
-            src="https://storage.googleapis.com/maps-solutions-twdw90a6w6/neighborhood-discovery/75bx/neighborhood-discovery.html"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            loading="lazy"
-          ></iframe>
+        <div className="w-1/1 md:w-4/5 mx-auto aspect-square mt-4 mb-0 h-[60vh]">
+          <Map />
         </div>
       </section>
 

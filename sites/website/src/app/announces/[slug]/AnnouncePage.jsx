@@ -90,10 +90,12 @@ export default function AnnouncePage({ params }) {
   const { slug } = params
   const [announces, setAnnounces] = useState([])
   const [filters, setFilters] = useState({ slug: slug })
+  const [loading, setLoding] = useState(true)
 
   useEffect(() => {
     const unsubscribe = retrieveAnnouncesSnapshot((data) => {
       setAnnounces(data)
+      setLoding(false)
     }, filters)
     return () => {
       if (unsubscribe && typeof unsubscribe === "function") {
@@ -102,6 +104,13 @@ export default function AnnouncePage({ params }) {
     }
   }, [filters, slug])
 
+  if (loading) {
+    return (
+      <div className="flex flex-nowrap h-screen w-full items-center justify-center">
+        読み込み中です...
+      </div>
+    )
+  }
   if (!announces || !announces.length) {
     return (
       <div className="flex flex-nowrap h-screen w-full items-center justify-center">

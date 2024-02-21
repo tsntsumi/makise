@@ -1,16 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx,mdx}"
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: "class",
   theme: {
     fontFamily: {
@@ -18,6 +8,18 @@ module.exports = {
     },
     extend: {
       colors: {
+        accent: {
+          50: "#b3b8b4", // "#f3b8b4",
+          100: "#beb5b4", // "#eeb5b4",
+          200: "#aba7a3", // "#eba7a3",
+          300: "#a48a86", // "#e48a86",
+          400: "#5dd8b8", // "#db675c",
+          500: "#37cca9", // "#ce4336",
+          600: "#31a388", // "#a53331",
+          700: "#26876b", // "#882525",
+          800: "#22725b", // "#732123",
+          900: "#1f6652" // "#661e23",
+        },
         current: "currentColor",
         transparent: "transparent",
         stroke: "#EEEEEE",

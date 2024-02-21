@@ -1,11 +1,12 @@
 "use client"
 import Image from "next/image"
 import Head from "next/head"
+import { ThemeProvider } from "next-themes"
 
-import Footer from "@/components/Footer"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import Hero from "@/components/Hero"
-import Brands from "@/components/Brands"
+import Outline from "@/components/Outline"
 import Problem from "@/components/Problem"
 import Testimonial from "@/components/Testimonial"
 import Feature from "@/components/Features"
@@ -22,22 +23,28 @@ import firebaseConfig from "@/firebase-config"
 export default function Page() {
   return (
     <>
-      <Header />
-      <Hero />
-      <Brands />
-      <Problem />
-      <Testimonial />
-      <CTA />
-      <About />
-      <Feature />
-      <CTA />
-      <Process />
-      <Pricing />
-      <CTA />
-      <Access />
-      <Magnet />
-      <CTA />
-      <Footer />
+      <ThemeProvider
+        enableSystem={false}
+        attribute="class"
+        defaultTheme="light"
+      >
+        <Header />
+        <Hero />
+        <Outline />
+        <Problem />
+        <Testimonial />
+        <CTA />
+        <About />
+        <Feature />
+        <CTA />
+        <Process />
+        <Pricing />
+        <CTA />
+        <Access />
+        <Magnet />
+        <CTA />
+        <Footer />
+      </ThemeProvider>
     </>
   )
 }

@@ -226,7 +226,7 @@ function handleSubmit(
     .then(async (data) => {
       const json = await data.json()
       if (json.success) {
-        router.push("http://makise-seikotsu.com/contact/thanks/")
+        router.push("https://makise-seikotsu.com/confirmation")
       } else {
         dispatch({ type: "SET_MODAL", payload: "error" })
       }

@@ -7,11 +7,11 @@ export default function Template() {
   //const now = new Date(2024, 2 - 1, 10, 0, 0, 0).getTime() // Date.now()
   //const now = new Date(2024, 2 - 1, 20, 0, 0, 0).getTime() // Date.now()
   //const now = new Date(2024, 3 - 1, 3, 0, 0, 0).getTime() // Date.now()
-  const campaignStart = new Date(2024, 2 - 1, 1, 0, 0, 0).getTime()
-  const campaignMiddle = new Date(2024, 2 - 1, 8, 0, 0, 0).getTime()
-  const campaignEnd = new Date(2024, 2 - 1, 15, 23, 59, 59).getTime()
-  const announceEnd = new Date(2024, 2 - 1, 28, 23, 59, 59).getTime()
-  const thanksEnd = new Date(2024, 3 - 1, 7, 23, 59, 59).getTime()
+  const campaignStart = new Date(2024, 2 - 1, 15, 0, 0, 0).getTime()
+  const campaignMiddle = new Date(2024, 2 - 1, 22, 0, 0, 0).getTime()
+  const campaignEnd = new Date(2024, 2 - 1, 29, 23, 59, 59).getTime()
+  const announceEnd = new Date(2024, 3 - 1, 14, 19, 59, 59).getTime()
+  const thanksEnd = new Date(2024, 3 - 1, 14 + 7, 23, 59, 59).getTime()
   const campaignDisplay =
     campaignStart <= now && now <= campaignEnd ? "block" : "hidden"
   const campaignMiddleDisplay =
@@ -40,12 +40,12 @@ export default function Template() {
       </p>
       <div className={`${campaignDisplay}`}>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-accent-800 sm:text-3xl">
-          まきせのゆがみ・しびれのお悩み解決施術体験会（2/14〜2/28）参加申込方法
+          チラシで、まきせのゆがみ・しびれのお悩み解決施術体験会をご覧になった方へ
         </h2>
         <p className="mt-2 text-sm text-gray-800 font-medium">
           体験会にご参加希望の方は、整体コース（初回）:
-          ６０分コースをお選びの上、
-          参加される時間をタップしてメッセージ入力欄に、
+          ６０分コースをお選びの上、 参加される時間をタップしてください。
+          そして、表示された入力ボックスのメッセージ欄に、
           チラシの下段のクーポンを入力してお申し込みください。
         </p>
         <p
@@ -59,7 +59,7 @@ export default function Template() {
       </div>
       <div className={`${announceDisplay}`}>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-accent-800 sm:text-3xl">
-          まきせのゆがみ・しびれのお悩み解決施術体験会（2/14〜2/28）締め切りました
+          まきせのゆがみ・しびれのお悩み解決施術体験会締め切りました
         </h2>
         <p className="mt-2 text-sm text-gray-800 font-medium">
           体験会のお申し込みを締め切りました。
@@ -74,13 +74,13 @@ export default function Template() {
       </div>
       <div className={`${thanksDisplay}`}>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-accent-800 sm:text-3xl">
-          まきせのゆがみ・しびれのお悩み解決施術体験会（2/14〜2/28）終了しました
+          まきせのゆがみ・しびれのお悩み解決施術体験会終了しました
         </h2>
         <p className="mt-2 text-sm text-gray-800 font-medium">
           体験会にご参加いただいたみなさま、ありがとうございました。
           おかげさまで、たくさんの方に私の施術のよさを体験していただけました。
         </p>
-        <p className="mt-2 text-sm text-gray-800 font-medium">
+        <p className="clear-both mt-2 text-sm text-gray-800 font-medium">
           今回ご参加できなかったみなさまには、次の体験会でお待ちしております。
         </p>
       </div>

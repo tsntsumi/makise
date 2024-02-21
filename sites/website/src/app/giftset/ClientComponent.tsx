@@ -1,22 +1,25 @@
 "use client"
+import React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
-export default async function Page() {
+export default function ClientComponent() {
   return (
     <>
       <section className="my-12 mx-4">
         <h1 className="md:text-6xl text-center">
           あなたの大切な人に感謝と健康を贈りませんか？
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center adjust-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center adjust-between leading-relaxed">
           <div className="text-2xl text-center font-serif">
             <div className="text-black my-12 text-2xl md:text-3xl font-bold text-rose-900">
-              <p>あなたは、あなたの大切な人に</p>
-              <p>どんな風に幸せになってもらいたいですか？</p>
+              <p>
+                あなたは、あなたの大切な人に、
+                どんな風に幸せになってもらいたいですか？
+              </p>
             </div>
             <div className="md:hidden block">
-              <div className="grid grid-cols-1 items-center justify-center">
+              <div className="grid grid-cols-1 pl-8 items-center justify-center">
                 <Image
                   src="/images/features/makise-massage.jpg"
                   alt="牧瀬院長があなたの大切な人をケアします"
@@ -29,7 +32,7 @@ export default async function Page() {
             </div>
             <div className="text-black my-12 text-2xl md:text-3xl font-bold text-rose-800">
               <p>あなたの願いを込め</p>
-              <p className="md:text-[1.4em]">あなたの愛の深さを伝えたいなら</p>
+              <p className="md:text-4xl">あなたの愛の深さを伝えたいなら</p>
             </div>
             <div className="text-black my-12 text-2xl md:text-3xl font-bold text-rose-600">
               <p>健康で元気な人生を歩んでいってほしいなら</p>
@@ -58,7 +61,7 @@ export default async function Page() {
 
       <section className="overflow-hidden pt-20 pb-6 lg:pb-10 xl:pb-16">
         <div className="mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
-          <div className="flex items-center gap-8 lg:gap-32.5 flex-wrap md:flex-nowrap">
+          <div className="flex items-center justify-around gap-8 lg:gap-32.5 flex-wrap md:flex-nowrap">
             <motion.div
               variants={{
                 hidden: {
@@ -153,10 +156,10 @@ export default async function Page() {
           </div>
         </div>
       </section>
-      <section>
-        <div>
-          <h2 className="w-fit mx-auto text-6xl">
-            <span className="text-2xl">あなたも、まきせの健康ケア</span>
+      <section className="overflow-hidden pt-20 pb-6 lg:pb-10 xl:pb-16">
+        <div className="mx-4">
+          <h2 className="w-fit mx-4 text-6xl">
+            あなたも、まきせの健康ケア
             <br />
             整体セットギフト券を贈ってみませんか？
           </h2>
@@ -172,7 +175,7 @@ export default async function Page() {
               className="mx-auto"
             />
           </div>
-          <div className="flex flex-wrap gap-6 items-start adjust-between w-full">
+          <div className="flex flex-wrap gap-6 items-start adjust-between mx-4">
             <div className="w-[40%] md:w-[22%]">
               <h4>初体験セット</h4>
               <p>
@@ -220,7 +223,7 @@ export default async function Page() {
           <h3 className="w-fit mx-auto">
             ４種類のメッセージカードとブランクのカードもご用意しました。
           </h3>
-          <div className="flex flex-wrap gap-2 items-start adjust-between w-fit mx-auto">
+          <div className="flex flex-wrap gap-2 items-start justify-around w-fit mx-auto">
             <div>
               <Image
                 src="/images/features/makise-message-card-1.svg"
@@ -278,20 +281,52 @@ export default async function Page() {
             メッセージカードに記入はいたしませんが、
             丁寧に包装してリボンを貼付して、あなたの代わりに心を込めて発送いたします。
           </p>
-          <div>
-            <script
-              async
-              src="https://js.stripe.com/v3/pricing-table.js"
-            ></script>
-            <stripe-pricing-table
-              pricing-table-id="prctbl_1OQYvGFI0fllSO6vfMl6spCI"
-              publishable-key={`${process.env.STRIPE_APIKEY}`}
-            ></stripe-pricing-table>
-          </div>
-          <div className="text-center text-4xl mt-14 mb-7 font-black text-rose-400">
-            あなたからの、想いのこもったご注文をお待ちしております
-          </div>
         </div>
+        <div>
+          <script
+            async
+            src="https://js.stripe.com/v3/pricing-table.js"
+          ></script>
+          <stripe-pricing-table
+            pricing-table-id="prctbl_1OQYvGFI0fllSO6vfMl6spCI"
+            publishable-key="pk_live_51Iztc7FI0fllSO6vrPrthDjNFhcr5tOMwfLPfQzxbwxysufEcSpAsHWO0BYQ2YoTMHUUpIiYH16fji4YVudyzkfg00g58Pk4ai"
+          ></stripe-pricing-table>
+        </div>
+        <div className="text-center text-4xl mt-14 mb-7 font-black text-rose-400 mx-8">
+          あなたからの、想いのこもった
+          <span className="inline-block"> ご注文をお待ちしております</span>
+        </div>
+      </section>
+      <section>
+        <ul className="list-none flex items-center justify-between gap-8">
+          <li>
+            <Image
+              width={110}
+              height={80}
+              src="/images/logo/logo-light.svg"
+              alt="Logo"
+              className="dark:hidden"
+            />
+            <Image
+              width={110}
+              height={80}
+              src="/images/logo/logo-dark.svg"
+              alt="Logo"
+              className="hidden dark:block"
+            />
+          </li>
+          <li>
+            <a href="/policy" className="hover:text-primary text-xs underline">
+              個人情報保護方針
+            </a>
+          </li>
+          <li>
+            <a href="/legal" className="hover:text-primary text-xs underline">
+              特定商取引法
+            </a>
+          </li>
+          <li></li>
+        </ul>
       </section>
     </>
   )

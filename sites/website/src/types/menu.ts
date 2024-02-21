@@ -3,5 +3,6 @@ export type Menu = {
   title: string | React.JSX.Element
   path?: string
   newTab: boolean
+  onClick?: () => boolean
   submenu?: Menu[]
 }

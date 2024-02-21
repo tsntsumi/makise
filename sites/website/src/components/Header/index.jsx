@@ -4,16 +4,12 @@ import Link from "next/link"
 import Script from "next/script"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import {
-  BookWithLineTalkExt,
-  BookWithPhoneCall
-} from "@/components/Common/Book"
 
 import ThemeToggler from "./ThemeToggler"
 import menuData from "./menuData"
+import { bookMenu } from "./menuData"
 
 const Header = () => {
-  const [navigationOpen, setNavigationOpen] = useState(false)
   const [dropdownToggler, setDropdownToggler] = useState(false)
   const [stickyMenu, setStickyMenu] = useState(false)
 
@@ -26,6 +22,54 @@ const Header = () => {
     } else {
       setStickyMenu(false)
     }
+  }
+
+  const onClickMenuItem = (onClick) => {
+    onClick && onClick()
+    setDropdownToggler(!dropdownToggler)
+    console.debug("onClickMenuItem")
+  }
+
+  const Book = ({ onClick }) => {
+    return (
+      <>
+        <ul
+          className={`flex flex-col gap-4 justify-around xl:flex-row xl:gap-6`}
+        >
+          <li key="booking" className="group relative">
+            <>
+              <button
+                onClick={() => setDropdownToggler(!dropdownToggler)}
+                className="flex cursor-pointer items-center justify-between gap-3 hover:text-primary"
+              >
+                {bookMenu.title}
+                <span>
+                  <svg
+                    className="h-3 w-3 cursor-pointer fill-waterloo group-hover:fill-primary"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                  </svg>
+                </span>
+              </button>
+              <ul className={`dropdown ${dropdownToggler ? "flex" : ""}`}>
+                {bookMenu.submenu.map((item, key) => (
+                  <li key={key} className="hover:text-primary">
+                    <a
+                      href={item.path || "#"}
+                      onClick={() => setDropdownToggler(false)}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          </li>
+        </ul>
+      </>
+    )
   }
 
   useEffect(() => {
@@ -42,7 +86,11 @@ const Header = () => {
         }`}
       >
         <div className="relative mx-auto max-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
-          <div className="flex w-full items-center justify-between xl:w-1/4 gap-4">
+          <div
+            className={`flex w-full ${
+              dropdownToggler ? "items-start" : "items-center"
+            } justify-between xl:w-1/4 gap-4`}
+          >
             <a href="/">
               <Image
                 src="/images/logo/logo-sq-dark.svg"
@@ -59,145 +107,19 @@ const Header = () => {
                 className="min-w-[64px] h-[64px] min-h-[64px] dark:hidden"
               />
             </a>
-            <div className="flex flex-nowrap">
-              <div className="md:w-1/2 md:text-center whitespace-nowrap">
-                <div className="text-xs">ご予約はお電話で</div>
-                <div>
-                  <span>☏ </span>
-                  <a
-                    href="tel:0292240076"
-                    className="text-blue-500 underline"
-                    onClick={() => gtag_report_phonebooking("tel:0292240076")}
-                  >
-                    029-224-0076
-                  </a>
-                </div>
-                <div className="text-xs">
-                  <span className="text-xs">(8時〜20時/</span>
-                  日曜&amp;水曜午後休)
-                </div>
+            {/* Booking */}
+            <Book onClick={() => setDropdownTrigger(!dropdownToggler)} />
+            {/* Booking End */}
+            {/* Address */}
+            <div className="flex flex-col flex-wrap text-xs">
+              <div className="block whitespace-nowrap">水戸市城東３丁目</div>
+              <div className="block">
+                <span className="whitespace-nowrap">城東ロイヤルハイツ</span>
+                <span className="whitespace-nowrap">103</span>
               </div>
             </div>
-            <div className="flex flex-wrap">
-              <div className="text-xs whitespace-nowrap">またはLINEで</div>
-              <BookWithLineTalkExt />
-            </div>
+            {/* Address End */}
 
-            {/* <!-- Hamburger Toggle BTN --> */}
-            <button
-              aria-label="hamburger Toggler"
-              className="block xl:hidden"
-              onClick={() => setNavigationOpen(!navigationOpen)}
-            >
-              <span className="relative block h-5.5 w-5.5 cursor-pointer">
-                <span className="absolute right-0 block h-full w-full">
-                  <span
-                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-[0] duration-200 ease-in-out dark:bg-white ${
-                      !navigationOpen ? "!w-full delay-300" : "w-0"
-                    }`}
-                  ></span>
-                  <span
-                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white ${
-                      !navigationOpen ? "delay-400 !w-full" : "w-0"
-                    }`}
-                  ></span>
-                  <span
-                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white ${
-                      !navigationOpen ? "!w-full delay-500" : "w-0"
-                    }`}
-                  ></span>
-                </span>
-                <span className="du-block absolute right-0 h-full w-full rotate-45">
-                  <span
-                    className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white ${
-                      !navigationOpen ? "!h-0 delay-[0]" : "h-full"
-                    }`}
-                  ></span>
-                  <span
-                    className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white ${
-                      !navigationOpen ? "!h-0 delay-200" : "h-0.5"
-                    }`}
-                  ></span>
-                </span>
-              </span>
-            </button>
-            {/* <!-- Hamburger Toggle BTN --> */}
-          </div>
-
-          {/* Nav Menu Start   */}
-          <div
-            className={`invisible h-0 w-full items-center justify-between xl:visible xl:flex xl:h-auto xl:w-full mx-4 ${
-              navigationOpen &&
-              "navbar !visible mt-4 h-auto max-h-[400px] rounded-md bg-white p-7.5 shadow-solid-5 dark:bg-blacksection xl:h-auto xl:p-0 xl:shadow-none xl:dark:bg-transparent"
-            }`}
-          >
-            <nav>
-              <ul className="flex flex-col gap-4 justify-around xl:flex-row xl:items-center xl:gap-6">
-                {menuData?.map((menuItem, key) => (
-                  <li
-                    key={key}
-                    className={menuItem.submenu && "group relative"}
-                  >
-                    {menuItem.submenu ? (
-                      <>
-                        <button
-                          onClick={() => setDropdownToggler(!dropdownToggler)}
-                          className="flex cursor-pointer items-center justify-between gap-3 hover:text-primary"
-                        >
-                          {menuItem.title}
-                          <span>
-                            <svg
-                              className="h-3 w-3 cursor-pointer fill-waterloo group-hover:fill-primary"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 512 512"
-                            >
-                              <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                            </svg>
-                          </span>
-                        </button>
-
-                        <ul
-                          className={`dropdown ${
-                            dropdownToggler ? "flex" : ""
-                          }`}
-                        >
-                          {menuItem.submenu.map((item, key) => (
-                            <li key={key} className="hover:text-primary">
-                              <a href={item.path || "#"}>{item.title}</a>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    ) : (
-                      <a
-                        href={`${menuItem.path}`}
-                        className={
-                          pathUrl === menuItem.path
-                            ? "text-primary hover:text-primary"
-                            : "hover:text-primary"
-                        }
-                      >
-                        {menuItem.title}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            <div className="text-xs p-2">
-              <a href="/#lead-magnet">
-                <Image
-                  data-v-6fa6a74a=""
-                  src="/images/icon/line-add-friend-ja.png"
-                  alt="友だちになる"
-                  className="inline-block"
-                  width="92"
-                  height="42"
-                />
-                とストレッチブックもらえる
-              </a>
-            </div>
             <ThemeToggler />
           </div>
         </div>

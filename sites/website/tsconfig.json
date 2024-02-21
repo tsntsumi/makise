@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "types": ["googlemaps", "gtag.js"],
+    "typeRoots": [ "node_modules/@types" ],
     "paths": {
       "@/*": ["./src/*", "./public/*"]
     },

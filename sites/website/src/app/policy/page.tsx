@@ -1,7 +1,8 @@
 import React from "react"
 import Link from "next/link"
+import type { Metadata } from "next"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "個人情報保護方針 -- まきせ鍼灸整骨院",
   description: "個人情報保護について"
 }
