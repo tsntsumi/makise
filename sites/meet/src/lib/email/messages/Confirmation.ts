@@ -16,7 +16,7 @@ export default function ConfirmationEmail({
   messageText: string
   course: string
   courseName: string
-  duration: number
+  duration: string
 }) {
   let body = `<div dir="ltr">`
   body += [

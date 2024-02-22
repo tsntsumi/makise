@@ -1,7 +1,7 @@
 import type { AvailabilitySlotsMap, MenuItem } from "./lib/types"
 
 // 選択可能なスロット
-export const MENU_ITEMS: [MenuItem] = [
+export const MENU_ITEMS: MenuItem[] = [
   {
     name: ["整体コース", "(初回)"],
     course: "seitai-1st",

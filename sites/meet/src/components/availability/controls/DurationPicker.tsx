@@ -2,6 +2,7 @@ import clsx from "clsx"
 
 import { MENU_ITEMS } from "@/config"
 import { useProvider } from "@/context/AvailabilityContext"
+import type { AvailabilitySlotsMap, MenuItem } from "@/lib/types"
 
 export default function DurationPicker() {
   const {

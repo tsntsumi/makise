@@ -10,7 +10,7 @@ export type AvailabilitySlot = {
 }
 
 export type MenuItem = {
-  name: React.JSX.Elements | string[]
+  name: string[]
   course: string
   duration: number
 }
