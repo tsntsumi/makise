@@ -2,13 +2,18 @@ import LRUCache from "lru-cache"
 import type { NextApiRequest, NextApiResponse } from "next"
 import { z } from "zod"
 
-import { OWNER_TIMEZONE, OWNER_EMAIL, MENU_ITEMS } from "@/config"
+import {
+  OWNER_TIMEZONE,
+  OWNER_EMAIL,
+  MENU_ITEMS,
+  DURATION_TO_COURSE,
+} from "@/config"
 import { formatLocalDate, formatLocalTime } from "@/lib/availability/helpers"
 import sendMail from "@/lib/email"
 import ApprovalEmail from "@/lib/email/messages/Approval"
 import ConfirmationEmail from "@/lib/email/messages/Confirmation"
 import getHash from "@/lib/hash"
-import type { DateTimeIntervalWithTimezone } from "@/lib/types"
+import type { DateTimeIntervalWithTimezone, CourseName } from "@/lib/types"
 
 const logger = require("firebase-functions/logger")
 require("firebase-functions/logger/compat")
@@ -32,6 +37,8 @@ const AppointmentRequestSchema = z.object({
   }),
   timeZone: z.string(),
   location: z.enum(["meet", "phone", "visit"]),
+  course: z.string(),
+  courseName: z.string(),
   duration: z
     .string()
     .refine((value) => !Number.isNaN(Number.parseInt(value)), {
@@ -88,13 +95,14 @@ export default async function handler(
     messageText: data.messageText,
   })
   await sendMail({
-    to: OWNER_EMAIL ?? "",
+    to: OWNER_EMAIL ?? "kikuo@alizza-ideal.com",
     subject: approveEmail.subject,
     body: approveEmail.body,
   })
 
   // Generate and send the confirmation email
   const confirmationEmail = ConfirmationEmail({
+    ...data,
     dateSummary: intervalToHumanString({
       start,
       end,
@@ -163,19 +171,16 @@ function intervalToHumanString({
   timeZone,
 }: DateTimeIntervalWithTimezone): string {
   const duration = (end.getTime() - start.getTime()) / (60 * 1000)
-  const menu = MENU_ITEMS.find((item) => item?.duration === duration)
-  const duration_name = menu?.name
-  return `${formatLocalDate(start, {
+  const startString = formatLocalDate(start, {
     month: "long",
     day: "numeric",
     hour: "numeric",
     minute: "numeric",
     weekday: "long",
-    timeZone,
-  })} – ${formatLocalTime(end, {
+  })
+  const endString = formatLocalTime(end, {
     hour: "numeric",
     minute: "numeric",
-    timeZone,
-    timeZoneName: "longGeneric",
-  })} : ${duration_name}`
+  })
+  return `${startString} – ${endString}`
 }

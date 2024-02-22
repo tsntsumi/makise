@@ -21,7 +21,7 @@ export default function getPotentialTimes({
   end,
   duration,
   availabilitySlots,
-  busy: busyTimes,
+  busy,
 }: {
   start: Day
   end: Day
@@ -65,11 +65,12 @@ export default function getPotentialTimes({
           end: currentIntervalEnd,
           busy: undefined,
         }
-        interval.busy = busyTimes?.find((b) => {
-          const start = subMinutes(b.start, SLOT_PADDING)
-          const end = addMinutes(b.end, SLOT_PADDING)
+        interval.busy = busy?.find((b) => {
+          const start = subMinutes(b?.start, SLOT_PADDING)
+          const end = addMinutes(b?.end, SLOT_PADDING)
           return areIntervalsOverlapping(interval, { start, end })
         })
+
         if (!interval.busy) {
           intervals.push(interval)
           currentIntervalStart = currentIntervalEnd

@@ -11,6 +11,9 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
+    "prebuild": "cp -p ../../.env* .",
+    "postbuild": "npm run sitemap",
+    "sitemap": "next-sitemap",
     "lint": "next lint"
   },
   "dependencies": {

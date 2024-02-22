@@ -7,8 +7,8 @@
     "start": "(cd sites/website && npm run start)",
     "devmeet": "(cd sites/meet && npm run next dev)",
     "startmeet": "(cd sites/meet && npm run start)",
-    "build": "for s in website meet; do (cd $s && npm run build); done",
-    "lint": "for s in website meet; do (cd $s && npm run lint); done"
+    "build": "for s in website meet; do (cd sites/$s && npm run build); done",
+    "lint": "for s in website meet; do (cd sites/$s && npm run lint); done"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.10",

@@ -1,12 +1,21 @@
-import type { AvailabilitySlotsMap } from "./lib/types"
+import type { AvailabilitySlotsMap, MenuItem } from "./lib/types"
 
-// 選択可能なスロットの分数
-export const ALLOWED_DURATIONS = [60, 70, 30, 45]
-export const MENU_ITEMS = [
-  { name: "整体コース(初回)", duration: 60 },
-  { name: "はり整体コース(初回)", duration: 90 },
-  { name: "整体コース", duration: 30 },
-  { name: "はり整体コース", duration: 45 },
+// 選択可能なスロット
+export const MENU_ITEMS: [MenuItem] = [
+  {
+    name: ["整体コース", "(初回)"],
+    course: "seitai-1st",
+    duration: 60,
+  },
+  {
+    name: ["はり整体", "コース", "(初回)"],
+    course: "hari-seitai-1st",
+    duration: 90,
+  },
+  { name: ["交通事故", "治療", "(初回)"], course: "traffic-1st", duration: 60 },
+  { name: ["整体", "コース"], course: "seitai", duration: 30 },
+  { name: ["はり整体", "コース"], course: "hari-seitai", duration: 45 },
+  { name: ["交通事故", "治療"], course: "traffic", duration: 30 },
 ]
 
 export const OWNER_EMAIL = "hiroto.h.makise+seikotsu@gmail.com"
@@ -14,27 +23,34 @@ export const OWNER_NAME = "まきせ鍼灸整骨院"
 export const OWNER_PHONE = "029 224 0076"
 export const OWNER_ADDRESS =
   "〒310-0012 茨城県水戸市城東３丁目５−８ 城東ロイヤルハイツ １０３"
+
+export const DURATION_TO_NAME = (duration: number) =>
+  MENU_ITEMS.find((item) => item.duration === duration)?.name?.join("")
+export const COURSE_TO_NAME = (course: string) =>
+  MENU_ITEMS.find((item) => item.course === course)?.name?.join("")
+export const DURATION_TO_COURSE = (duration: number) =>
+  MENU_ITEMS.find((item) => item.duration === duration)?.course || ""
+export const COURSE_TO_DURATION = (course: string) =>
+  MENU_ITEMS.find((item) => item.course === course)?.duration || 0
+
 export const USER_ACCOUNT = "kikuo@alizza-ideal.com"
 export const EMAIL_REPLYTO = OWNER_EMAIL
 export const EMAIL_BCC = ["meet-makise@alizza-ideal.com"]
 
-export const DURATION_TO_NAME = (duration: number) =>
-  MENU_ITEMS.find((item) => item.duration === duration)?.name
-
-// スロットの分数の初期値（何も指定していない場合の分数）
-export const DEFAULT_DURATION = 30
-export const DEFAULT_DURATION_NAME = DURATION_TO_NAME(DEFAULT_DURATION)
-
 const OWNER_CALENDAR = "hiroto.h.makise@gmail.com"
 const MEET_MAKISE_CALENDAR =
   "c_dcf39dca8a6217a946bec81663e9d460407d8480b46922a1850b4bc1be4b3f34@group.calendar.google.com"
+
+// スロットの分数の初期値（何も指定していない場合の分数）
+export const DEFAULT_DURATION = MENU_ITEMS[0].duration
+export const DEFAULT_COURSE = DURATION_TO_COURSE(DEFAULT_DURATION) || ""
 
 // export const EVENT_CALENDAR = RESERVE_CALENDAR
 export const EVENT_CALENDAR = MEET_MAKISE_CALENDAR
 // export const EVENT_CALENDAR = OWNER_CALENDAR
 
 // 空き状況を確認するカレンダーのID（primary はメインのカレンダー）
-export const CALENDARS_TO_CHECK = [EVENT_CALENDAR, OWNER_CALENDAR]
+export const CALENDARS_TO_CHECK = [EVENT_CALENDAR]
 
 export const WEEKDAYS = ["日", "月", "火", "水", "木", "金", "土"]
 
@@ -55,6 +71,7 @@ const DEFAULT_WORKDAY = [
   {
     start: {
       hour: 8,
+      minute: 0,
     },
     end: {
       hour: 12,
@@ -64,6 +81,7 @@ const DEFAULT_WORKDAY = [
   {
     start: {
       hour: 15,
+      minute: 0,
     },
     end: {
       hour: 20,
@@ -75,6 +93,7 @@ const WED_WORKTIME = [
   {
     start: {
       hour: 8,
+      minute: 0,
     },
     end: {
       hour: 12,

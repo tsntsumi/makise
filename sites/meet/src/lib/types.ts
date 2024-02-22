@@ -9,6 +9,12 @@ export type AvailabilitySlot = {
   end: { hour: number; minute?: number }
 }
 
+export type MenuItem = {
+  name: React.JSX.Elements | string[]
+  course: string
+  duration: number
+}
+
 /**
  * A map of day of week (0-6) to availability slots.
  */
@@ -37,8 +43,13 @@ export type DateTimeInterval = {
   start: Date
   /** Ending date */
   end: Date
-  /** Ending date */
+  /** Busy interval */
   busy?: DateTimeInterval | undefined
+}
+
+export type CourseName = {
+  course: string
+  name: string
 }
 
 /**
@@ -72,5 +83,8 @@ export type AppointmentProps = {
   name: string
   /** Duration of the meeting in minutes  */
   duration: string
+  /** Course name of the meeting in minutes  */
+  course: string
+  /** Message text  */
   messageText: string
 }

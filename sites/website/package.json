@@ -1,6 +1,11 @@
 {
   "name": "makise-seikotsu",
   "version": "1.0.0",
+  "author": {
+    "name": "TSUTSUMI Kikuo",
+    "email": "kikuo@alizza-ideal.com"
+  },
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev .",
